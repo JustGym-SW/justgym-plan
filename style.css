@@ -31,8 +31,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 16.5px;
+  line-height: 1.78;
   padding-bottom: 100px;
 }
 
@@ -178,7 +178,7 @@ nav {
   letter-spacing: -0.3px;
 }
 .section-desc {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-faint);
   margin-bottom: 28px;
   padding-bottom: 20px;
@@ -191,7 +191,7 @@ nav {
 .callout {
   padding: 18px 22px;
   margin-bottom: 24px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
   border-radius: 2px;
 }
@@ -244,7 +244,7 @@ nav {
   margin-bottom: 6px;
   letter-spacing: -0.1px;
 }
-.step-body p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+.step-body p { font-size: 15px; color: var(--text-muted); line-height: 1.75; }
 .tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
 .tag {
   background: var(--bg);
@@ -310,7 +310,7 @@ nav {
   margin-bottom: 10px;
   opacity: 0.8;
 }
-.card p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+.card p { font-size: 15px; color: var(--text-muted); line-height: 1.75; }
 
 /* ── NAV CARDS (overview page) ── */
 .nav-card {
@@ -344,7 +344,7 @@ nav {
   margin-bottom: 10px;
   letter-spacing: -0.2px;
 }
-.nav-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+.nav-card p { font-size: 14.5px; color: var(--text-muted); line-height: 1.7; }
 .nav-card .nc-arrow {
   display: inline-block;
   margin-top: 18px;
@@ -365,7 +365,7 @@ nav {
   gap: 16px;
   padding: 13px 22px;
   border-bottom: 1px solid var(--border-light);
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-muted);
   line-height: 1.7;
   background: var(--surface);
@@ -401,7 +401,7 @@ nav {
   overflow-x: auto;
   box-shadow: var(--shadow-sm);
 }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
 th {
   background: var(--navy);
   color: rgba(255,255,255,0.6);
