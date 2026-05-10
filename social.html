@@ -27,36 +27,33 @@
 <div class="page-header">
   <div class="label">Section 04</div>
   <h1>Social Media Responses</h1>
-  <p>Claude monitors Instagram and Facebook for new comments and messages, drafts natural replies in JustGym's voice, and posts them automatically. Every interaction is logged.</p>
+  <p>ManyChat handles Instagram and Facebook automatically &mdash; comment-to-DM flows, keyword triggers, and Messenger replies. Claude drafts the messages. Everything is logged to Google Sheets.</p>
 </div>
 
 <div class="main">
 
   <div class="section">
-    <div class="section-label">Platforms</div>
-    <h2>What Gets Covered</h2>
-    <p class="section-desc">Two platforms, three types of interaction &mdash; each handled slightly differently based on what the API supports.</p>
+    <div class="section-label">Primary Tool</div>
+    <h2>Why ManyChat</h2>
+    <p class="section-desc">ManyChat is purpose-built for this and has official Meta approval &mdash; meaning it can do things Zapier alone cannot.</p>
+
+    <div class="callout callout-info">
+      <strong>ManyChat is the only way to automate Instagram DMs reliably.</strong> Meta's API restricts third-party tools from reading and sending Instagram Direct Messages &mdash; except for platforms with official approval. ManyChat is one of them. It also handles comment-to-DM flows natively, which means someone commenting on a post can automatically receive a DM, which no standard Zapier integration can do.
+    </div>
 
     <div class="grid-3">
       <div class="card">
-        <h3>Instagram Comments</h3>
-        <p>New comments on JustGym posts are detected, analysed by Claude, and replied to directly on the post. Works for Business accounts connected via Instagram for Business.</p>
-        <div class="tags" style="margin-top:10px;"><span class="tag">InstagramBusinessCLIAPI</span></div>
+        <h3>Comment-to-DM</h3>
+        <p>A user comments on a JustGym post with a trigger word &mdash; such as "info", "join", or "membership". ManyChat automatically sends them a DM. Claude writes the DM content.</p>
       </div>
       <div class="card">
-        <h3>Facebook Comments</h3>
-        <p>New comments on the JustGym Facebook Page are detected and replied to automatically via Facebook Pages. Claude matches the tone of the original post when drafting.</p>
-        <div class="tags" style="margin-top:10px;"><span class="tag">FacebookV2CLIAPI</span></div>
+        <h3>Instagram DMs</h3>
+        <p>Incoming DMs to the JustGym Instagram account are handled by ManyChat. Keyword flows route common questions automatically. Anything outside the flow goes to Claude for a drafted reply.</p>
       </div>
       <div class="card">
-        <h3>Facebook Messages</h3>
-        <p>Messages sent to the JustGym Facebook Page via Messenger are picked up and replied to by Claude. Instagram DMs require manual handling due to Meta API restrictions &mdash; see note below.</p>
-        <div class="tags" style="margin-top:10px;"><span class="tag">FacebookMessengerCLIAPI</span></div>
+        <h3>Facebook Messenger</h3>
+        <p>ManyChat also manages Facebook Messenger for the JustGym Page. Same keyword flows, same Claude integration, same escalation rules &mdash; one platform handles both channels.</p>
       </div>
-    </div>
-
-    <div class="callout callout-info" style="margin-top:4px;">
-      <strong>Instagram DMs:</strong> Meta's API does not currently allow third-party tools to read or send Instagram Direct Messages reliably. Instagram DMs need to be handled manually or through Meta Business Suite. This may change as Meta updates its API access policies.
     </div>
   </div>
 
@@ -65,67 +62,59 @@
   <div class="section">
     <div class="section-label">How It Works</div>
     <h2>Automation Flow</h2>
-    <p class="section-desc">The same core logic applies to all three interaction types &mdash; trigger, draft, post, log.</p>
+    <p class="section-desc">ManyChat is the front door. It catches the interaction, applies keyword logic, and either handles it directly or passes it to Claude for a drafted reply.</p>
 
-    <div class="flow" style="margin-bottom:12px;">
-      <div class="flow-node primary">New Comment / Message</div>
+    <div class="flow" style="margin-bottom:20px;">
+      <div class="flow-node primary">Comment or DM</div>
       <div class="flow-arrow">&#8594;</div>
-      <div class="flow-node">Read Content</div>
+      <div class="flow-node">ManyChat Keyword Match</div>
       <div class="flow-arrow">&#8594;</div>
       <div class="flow-node">Member Check</div>
       <div class="flow-arrow">&#8594;</div>
-      <div class="flow-node">Claude Drafts Reply</div>
+      <div class="flow-node">Claude Drafts</div>
       <div class="flow-arrow">&#8594;</div>
-      <div class="flow-node">Post Reply</div>
+      <div class="flow-node">ManyChat Sends</div>
       <div class="flow-arrow">&#8594;</div>
-      <div class="flow-node">Log Row</div>
+      <div class="flow-node">Log to Sheets</div>
     </div>
 
     <ul class="steps">
       <li class="step">
         <div class="step-num">01</div>
         <div class="step-body">
-          <h4>Trigger on new comment or message</h4>
-          <p>Zapier watches for new comments on Instagram posts, new comments on the Facebook Page, and new messages sent to the Facebook Page via Messenger. Each is a separate Zapier trigger but feeds into the same Claude drafting step.</p>
-          <div class="tags">
-            <span class="tag">InstagramBusinessCLIAPI</span>
-            <span class="tag">FacebookV2CLIAPI</span>
-            <span class="tag">FacebookMessengerCLIAPI</span>
-          </div>
+          <h4>ManyChat detects the interaction</h4>
+          <p>ManyChat monitors Instagram comments, Instagram DMs, and Facebook Messenger messages in real time. Keyword triggers are set up in ManyChat's flow builder &mdash; for example, any comment containing "info", "price", "join", or "membership" triggers an automatic DM.</p>
+          <div class="tags"><span class="tag">ManyChatCLIAPI</span></div>
         </div>
       </li>
       <li class="step">
         <div class="step-num">02</div>
         <div class="step-body">
-          <h4>Check the member database</h4>
-          <p>Cross-reference the sender's username or linked account against the member database. If the sender is a sleeper member, do not reply automatically &mdash; flag for manual review and log the interaction.</p>
+          <h4>Check against the member database</h4>
+          <p>Before responding, cross-reference the sender's username or linked account against the member list. Sleeper members and flagged accounts are routed straight to escalation without receiving a reply.</p>
         </div>
       </li>
       <li class="step">
         <div class="step-num">03</div>
         <div class="step-body">
           <h4>Claude drafts the reply</h4>
-          <p>Claude receives the original post or message content, the comment or message text, the platform, and the interaction type. It writes a reply that sounds natural, matches the energy of the comment, and stays in JustGym's voice. Short and direct for comments. Slightly warmer for messages.</p>
-          <div class="tags"><span class="tag">AnthropicCLIAPI</span></div>
+          <p>ManyChat passes the comment or message text to Claude via Zapier. Claude writes a short, natural reply in JustGym's voice &mdash; direct for simple questions, warmer for DM conversations. The reply is sent back to ManyChat to be delivered.</p>
+          <div class="tags"><span class="tag">AnthropicCLIAPI</span><span class="tag">ManyChatCLIAPI</span></div>
         </div>
       </li>
       <li class="step">
         <div class="step-num">04</div>
         <div class="step-body">
-          <h4>Post the reply</h4>
-          <p>The reply is posted directly as a comment reply on Instagram or Facebook, or sent as a Messenger response. No human approval step is needed for straightforward interactions &mdash; escalation handles edge cases.</p>
-          <div class="tags">
-            <span class="tag">InstagramBusinessCLIAPI</span>
-            <span class="tag">FacebookV2CLIAPI</span>
-            <span class="tag">FacebookMessengerCLIAPI</span>
-          </div>
+          <h4>ManyChat sends the reply</h4>
+          <p>ManyChat posts the reply back on Instagram or Facebook &mdash; as a comment reply, a DM, or a Messenger message depending on where the original interaction came from. No manual intervention needed for standard interactions.</p>
+          <div class="tags"><span class="tag">ManyChatCLIAPI</span></div>
         </div>
       </li>
       <li class="step">
         <div class="step-num">05</div>
         <div class="step-body">
           <h4>Log to Google Sheets</h4>
-          <p>Every interaction is recorded in the Social Responses sheet &mdash; platform, username, original message, reply sent, and outcome. Useful for spotting patterns and reviewing what Claude has said.</p>
+          <p>Zapier writes a row to the Social Responses sheet for every interaction &mdash; platform, username, message content, reply sent, and outcome. Useful for spotting common questions and reviewing what has been said.</p>
           <div class="tags"><span class="tag">GoogleSheetsV2CLIAPI</span></div>
         </div>
       </li>
@@ -135,36 +124,66 @@
   <hr />
 
   <div class="section">
+    <div class="section-label">Keyword Flows</div>
+    <h2>Setting Up ManyChat Triggers</h2>
+    <p class="section-desc">ManyChat uses keyword triggers to decide what happens when someone comments or messages. These are configured once in ManyChat's flow builder.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Trigger Word(s)</th><th>Channel</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>info, membership, join, sign up, pricing</td>
+            <td>Instagram comment</td>
+            <td>Auto-DM with a short intro and a link to enquire &mdash; drafted by Claude</td>
+          </tr>
+          <tr>
+            <td>Any inbound DM</td>
+            <td>Instagram DM</td>
+            <td>Claude drafts a contextual reply. Common questions answered directly; anything else nudges them to call or visit.</td>
+          </tr>
+          <tr>
+            <td>Any inbound message</td>
+            <td>Facebook Messenger</td>
+            <td>Claude drafts a reply. Same logic as Instagram DMs.</td>
+          </tr>
+          <tr>
+            <td>Complaint, refund, cancel, injury, hurt</td>
+            <td>All channels</td>
+            <td>Escalated to human agent via WhatsApp. No automated reply sent.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
     <div class="section-label">Voice &amp; Tone</div>
     <h2>How Claude Should Sound</h2>
-    <p class="section-desc">Social replies need to feel off-the-cuff, not corporate. Claude is briefed differently here than it is for email.</p>
+    <p class="section-desc">Social replies need to feel like a real person wrote them, not a support ticket system.</p>
 
     <div class="grid-2">
       <div class="card">
-        <h3>Comments (Instagram &amp; Facebook)</h3>
-        <p>
-          Keep it short &mdash; one or two sentences at most.<br /><br />
-          Match the energy of the comment. A hype comment gets an enthusiastic reply. A question gets a direct answer or a nudge to DM for more detail.<br /><br />
-          Use the person's name or handle where natural. Do not over-explain. No hashtags unless they were already in the original post.
-        </p>
+        <h3>Comments &amp; Quick Replies</h3>
+        <p>One or two sentences. Match the energy of the comment. Enthusiastic comments get an upbeat reply. Questions get a direct answer or a nudge to DM for more detail. No hashtags unless the original post used them.</p>
       </div>
       <div class="card">
-        <h3>Messages (Facebook Messenger)</h3>
-        <p>
-          Slightly warmer and more conversational than comment replies.<br /><br />
-          Answer the question directly if the Knowledge Base has the answer. If not, let them know someone will follow up shortly &mdash; do not leave them hanging with a non-answer.<br /><br />
-          Sign off naturally &mdash; no formal "Kind regards" style sign-off. Just the message.
-        </p>
+        <h3>DMs &amp; Messenger</h3>
+        <p>Slightly more conversational. Answer the question if the Knowledge Base covers it. If not, let them know someone will follow up &mdash; never leave them with a non-answer. No formal sign-off. Just the message.</p>
       </div>
     </div>
 
-    <ul class="rules-list" style="margin-top:4px;">
-      <li class="rule-row"><span class="dash">&mdash;</span>Do not reveal pricing, membership rates, or package details in public comments. Direct those questions to DMs or the website.</li>
-      <li class="rule-row"><span class="dash">&mdash;</span>Do not respond to complaints or negative comments automatically. Flag for human review.</li>
-      <li class="rule-row"><span class="dash">&mdash;</span>Do not engage with spam, promotional comments, or accounts with no profile picture and zero posts.</li>
+    <ul class="rules-list" style="margin-top: 4px;">
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not post pricing in public comment replies. Direct pricing questions to DMs.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not engage with spam, accounts with no posts, or obvious bots. Skip entirely.</li>
       <li class="rule-row"><span class="dash">&mdash;</span>Do not mention competitors by name.</li>
-      <li class="rule-row"><span class="dash">&mdash;</span>Never confirm or deny membership status for any individual in a public reply.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Never confirm or deny someone's membership status in a public reply.</li>
       <li class="rule-row"><span class="dash">&mdash;</span>Emails from sleeper members should not be auto-replied to. Route to the human agent.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Any negative comment, complaint, or sensitive message goes to a human. Claude does not handle these.</li>
     </ul>
   </div>
 
@@ -173,7 +192,7 @@
   <div class="section">
     <div class="section-label">Escalation</div>
     <h2>When to Route to a Human</h2>
-    <p class="section-desc">Not everything should be handled automatically. These cases go straight to the team.</p>
+    <p class="section-desc">ManyChat checks for escalation conditions before passing anything to Claude.</p>
 
     <div class="grid-2">
       <div class="card">
@@ -182,14 +201,45 @@
           Complaints or negative sentiment<br />
           Refund or cancellation requests<br />
           Injury or health-related messages<br />
-          Any message that mentions legal action<br />
+          Any mention of legal action<br />
           Sleeper member interactions<br />
-          Anything Claude cannot confidently answer
+          Anything Claude cannot answer confidently
         </p>
       </div>
       <div class="card">
-        <h3>How Escalation Works</h3>
-        <p>If the interaction meets any escalation condition, the automation skips the reply step and sends a WhatsApp alert to the team with the platform, username, and message content. The interaction is logged as <em>Escalated.</em></p>
+        <h3>How It Works</h3>
+        <p>ManyChat skips the Claude step and triggers a Zapier webhook that sends a WhatsApp alert to the team. The alert includes the platform, username, and the full message. Logged as <em>Escalated</em> in Google Sheets.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">ManyChat Plan</div>
+    <h2>What the Free Plan Covers</h2>
+    <p class="section-desc">ManyChat's free plan is enough to get started. The Pro plan unlocks AI features and removes contact limits.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Free Plan</h3>
+        <p>
+          Up to 1,000 contacts<br />
+          Instagram and Facebook Messenger automation<br />
+          Keyword triggers and comment-to-DM flows<br />
+          Basic flow builder<br />
+          Zapier integration included
+        </p>
+      </div>
+      <div class="card">
+        <h3>Pro Plan ($15/month)</h3>
+        <p>
+          Unlimited contacts<br />
+          AI-powered reply features (can reduce Claude API usage)<br />
+          Advanced flow conditions<br />
+          Email and SMS channels<br />
+          Priority support
+        </p>
       </div>
     </div>
   </div>
@@ -199,7 +249,7 @@
   <div class="section">
     <div class="section-label">Logging</div>
     <h2>What Gets Logged</h2>
-    <p class="section-desc">All social interactions are written to a dedicated Social Responses sheet in the shared Google Sheets log.</p>
+    <p class="section-desc">All interactions are written to the Social Responses sheet in the shared Google Sheets log via Zapier.</p>
 
     <div class="table-wrap">
       <table>
@@ -208,8 +258,8 @@
         </thead>
         <tbody>
           <tr><td>Date &amp; Time</td><td>Auto-timestamp</td></tr>
-          <tr><td>Platform</td><td>Instagram / Facebook Page / Facebook Messenger</td></tr>
-          <tr><td>Type</td><td>Comment / Message</td></tr>
+          <tr><td>Platform</td><td>Instagram / Facebook Messenger</td></tr>
+          <tr><td>Type</td><td>Comment / DM / Message</td></tr>
           <tr><td>Username</td><td>Sender handle or name</td></tr>
           <tr><td>Original Content</td><td>The comment or message text</td></tr>
           <tr><td>Reply Sent</td><td>Claude's reply, or N/A if escalated</td></tr>

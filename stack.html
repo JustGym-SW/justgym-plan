@@ -78,11 +78,18 @@
             <td>API key</td>
           </tr>
           <tr>
-            <td><strong>SerpAPI</strong></td>
-            <td>Direct API (no Zapier)</td>
+            <td><strong>Google Places API</strong></td>
+            <td>Webhooks by Zapier (direct API call)</td>
             <td>Finding local businesses via Google Maps by radius</td>
-            <td>Free: 100 searches/month. Paid from $50/month</td>
-            <td>API key</td>
+            <td>$200/month free Google Cloud credit &mdash; free at this scale</td>
+            <td>API key (Google Cloud)</td>
+          </tr>
+          <tr>
+            <td><strong>ManyChat</strong></td>
+            <td><code>ManyChatCLIAPI</code></td>
+            <td>Instagram DMs, comment-to-DM flows, Facebook Messenger automation</td>
+            <td>Free up to 1,000 contacts. Pro $15/month</td>
+            <td>ManyChat login (Meta OAuth)</td>
           </tr>
           <tr>
             <td><strong>Hunter.io</strong></td>
@@ -144,9 +151,9 @@
       <div class="card">
         <h3>Social Media Auto-Reply</h3>
         <p>
-          Trigger: new comment or message<br />
-          Detects new Instagram comments, Facebook Page comments, and Facebook Messenger messages. Claude drafts a natural reply and posts it. Complaints and sensitive topics are escalated via WhatsApp.<br /><br />
-          Apps: Instagram for Business &bull; Facebook Pages &bull; Facebook Messenger &bull; Claude &bull; WhatsApp Business &bull; Google Sheets
+          Trigger: new comment or DM (via ManyChat)<br />
+          ManyChat handles Instagram DMs, comment-to-DM flows, and Facebook Messenger. Claude drafts replies. Complaints and sensitive topics escalated via WhatsApp.<br /><br />
+          Apps: ManyChat &bull; Claude &bull; WhatsApp Business &bull; Google Sheets
         </p>
       </div>
     </div>

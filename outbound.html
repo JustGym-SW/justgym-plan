@@ -38,12 +38,12 @@
     <p class="section-desc">Apollo is a large-scale global B2B database. For this campaign it is unnecessary.</p>
 
     <div class="callout callout-info">
-      <strong>SerpAPI is the better fit.</strong> Apollo is designed for prospecting across millions of global companies by industry, job title, and company size. For finding businesses within a few miles of a gym, SerpAPI (Google Maps) is more accurate, faster to configure, and significantly cheaper. It searches by physical proximity and returns live, local results &mdash; exactly what this campaign needs.
+      <strong>Google Places API is the better fit.</strong> Apollo is designed for prospecting across millions of global companies by industry, job title, and company size. For finding businesses within a few miles of a gym, Google Places API (Google Maps) is more accurate, faster to configure, and significantly cheaper. It searches by physical proximity and returns live, local results &mdash; exactly what this campaign needs.
     </div>
 
     <div class="grid-2">
       <div class="card">
-        <h3>SerpAPI (Google Maps)</h3>
+        <h3>Google Places API (Google Maps)</h3>
         <p>Searches Google Maps by location and business type. Returns real businesses within your target radius with name, address, website, phone, and category. Free tier: 100 searches per month.</p>
       </div>
       <div class="card">
@@ -63,7 +63,7 @@
     <div class="flow">
       <div class="flow-node primary">9:00 AM Daily</div>
       <div class="flow-arrow">&#8594;</div>
-      <div class="flow-node">SerpAPI &mdash; Find Businesses</div>
+      <div class="flow-node">Google Places API &mdash; Find Businesses</div>
       <div class="flow-arrow">&#8594;</div>
       <div class="flow-node">Hunter &mdash; Find Email</div>
       <div class="flow-arrow">&#8594;</div>
@@ -80,9 +80,9 @@
       <li class="step">
         <div class="step-num">01</div>
         <div class="step-body">
-          <h4>Find local businesses via SerpAPI</h4>
-          <p>SerpAPI runs a Google Maps search for businesses within the configured radius of the gym. Filter by business type: offices, retail, hospitality, healthcare, tech. Each result returns the business name, address, website, phone number, and category.</p>
-          <div class="tags"><span class="tag">SerpAPI</span><span class="tag">Google Maps</span></div>
+          <h4>Find local businesses via Google Places API</h4>
+          <p>Google Places API runs a Google Maps search for businesses within the configured radius of the gym. Filter by business type: offices, retail, hospitality, healthcare, tech. Each result returns the business name, address, website, phone number, and category.</p>
+          <div class="tags"><span class="tag">Google Places API</span><span class="tag">Google Maps</span></div>
         </div>
       </li>
       <li class="step">
@@ -175,9 +175,9 @@
     <div class="card" style="margin-bottom:16px;">
       <h3>Prompt Brief Given to Claude</h3>
       <p>
-        Business: [name from SerpAPI]<br />
+        Business: [name from Google Places API]<br />
         Contact: [name from Hunter, or &ldquo;there&rdquo; if unknown]<br />
-        Industry: [category from SerpAPI]<br />
+        Industry: [category from Google Places API]<br />
         Employees: [approximate count]<br /><br />
         Write a short, warm outreach email for JustGym offering a corporate staff membership package as an employee benefit. Under 150 words. Open with a line specific to their industry or team size. Include a soft CTA &mdash; offer to send packages over, no obligation. No pricing. No guarantees. No emojis. Sign off as JustGym Team.
       </p>
@@ -202,9 +202,9 @@
         </thead>
         <tbody>
           <tr><td>Date &amp; Time</td><td>Auto-timestamp</td></tr>
-          <tr><td>Business Name</td><td>From SerpAPI</td></tr>
-          <tr><td>Industry</td><td>From SerpAPI</td></tr>
-          <tr><td>Employee Count</td><td>From SerpAPI / Hunter enrichment</td></tr>
+          <tr><td>Business Name</td><td>From Google Places API</td></tr>
+          <tr><td>Industry</td><td>From Google Places API</td></tr>
+          <tr><td>Employee Count</td><td>From Google Places API / Hunter enrichment</td></tr>
           <tr><td>Contact Name</td><td>From Hunter</td></tr>
           <tr><td>Contact Email</td><td>From Hunter</td></tr>
           <tr><td>Email Sent</td><td>Yes / No</td></tr>
