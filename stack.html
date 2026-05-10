@@ -15,6 +15,7 @@
     <a href="gmail.html">Gmail</a>
     <a href="inbound.html">Inbound</a>
     <a href="outbound.html">Outbound</a>
+    <a href="social.html">Social</a>
     <a href="stack.html" class="active">Tech Stack</a>
   </div>
 </nav>
@@ -24,7 +25,7 @@
 </div>
 
 <div class="page-header">
-  <div class="label">Section 04</div>
+  <div class="label">Section 05</div>
   <h1>Tech Stack</h1>
   <p>Every tool used across both automations &mdash; what it does, its Zapier App ID, cost, and how it connects. All tools are connected through Zapier except SerpAPI, which is called directly.</p>
 </div>
@@ -90,6 +91,27 @@
             <td>Free: 25/month. Starter $34/month</td>
             <td>API key or OAuth</td>
           </tr>
+          <tr>
+            <td><strong>Instagram for Business</strong></td>
+            <td><code>InstagramBusinessCLIAPI</code></td>
+            <td>Detecting new post comments and posting replies</td>
+            <td>Free (requires Instagram Business account)</td>
+            <td>Meta OAuth</td>
+          </tr>
+          <tr>
+            <td><strong>Facebook Pages</strong></td>
+            <td><code>FacebookV2CLIAPI</code></td>
+            <td>Detecting new page comments and posting replies</td>
+            <td>Free (requires Facebook Page)</td>
+            <td>Meta OAuth</td>
+          </tr>
+          <tr>
+            <td><strong>Facebook Messenger</strong></td>
+            <td><code>FacebookMessengerCLIAPI</code></td>
+            <td>Detecting and replying to messages sent to the Facebook Page</td>
+            <td>Free</td>
+            <td>Meta OAuth</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -117,6 +139,14 @@
           Trigger: daily at 9:00 AM<br />
           Finds local businesses via SerpAPI, looks up emails via Hunter, checks the log for recent contact, has Claude draft a pitch, sends from the outreach inbox, and logs every attempt.<br /><br />
           Apps: SerpAPI &bull; Hunter &bull; Claude &bull; Gmail &bull; Google Sheets
+        </p>
+      </div>
+      <div class="card">
+        <h3>Social Media Auto-Reply</h3>
+        <p>
+          Trigger: new comment or message<br />
+          Detects new Instagram comments, Facebook Page comments, and Facebook Messenger messages. Claude drafts a natural reply and posts it. Complaints and sensitive topics are escalated via WhatsApp.<br /><br />
+          Apps: Instagram for Business &bull; Facebook Pages &bull; Facebook Messenger &bull; Claude &bull; WhatsApp Business &bull; Google Sheets
         </p>
       </div>
     </div>
@@ -198,9 +228,9 @@
   </div>
 
   <div class="page-nav">
-    <a href="outbound.html">
+    <a href="social.html">
       <div class="pn-label">&larr; Previous</div>
-      <div class="pn-title">Outbound B2B Campaign</div>
+      <div class="pn-title">Social Media Responses</div>
     </a>
     <a href="index.html" class="next">
       <div class="pn-label">Back to start</div>

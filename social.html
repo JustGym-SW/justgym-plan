@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Media Responses — JustGym Plan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">JustGym</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="gmail.html">Gmail</a>
+    <a href="inbound.html">Inbound</a>
+    <a href="outbound.html">Outbound</a>
+    <a href="social.html" class="active">Social</a>
+    <a href="stack.html">Tech Stack</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Overview</a><span>&rsaquo;</span> Social Media Responses
+</div>
+
+<div class="page-header">
+  <div class="label">Section 04</div>
+  <h1>Social Media Responses</h1>
+  <p>Claude monitors Instagram and Facebook for new comments and messages, drafts natural replies in JustGym's voice, and posts them automatically. Every interaction is logged.</p>
+</div>
+
+<div class="main">
+
+  <div class="section">
+    <div class="section-label">Platforms</div>
+    <h2>What Gets Covered</h2>
+    <p class="section-desc">Two platforms, three types of interaction &mdash; each handled slightly differently based on what the API supports.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Instagram Comments</h3>
+        <p>New comments on JustGym posts are detected, analysed by Claude, and replied to directly on the post. Works for Business accounts connected via Instagram for Business.</p>
+        <div class="tags" style="margin-top:10px;"><span class="tag">InstagramBusinessCLIAPI</span></div>
+      </div>
+      <div class="card">
+        <h3>Facebook Comments</h3>
+        <p>New comments on the JustGym Facebook Page are detected and replied to automatically via Facebook Pages. Claude matches the tone of the original post when drafting.</p>
+        <div class="tags" style="margin-top:10px;"><span class="tag">FacebookV2CLIAPI</span></div>
+      </div>
+      <div class="card">
+        <h3>Facebook Messages</h3>
+        <p>Messages sent to the JustGym Facebook Page via Messenger are picked up and replied to by Claude. Instagram DMs require manual handling due to Meta API restrictions &mdash; see note below.</p>
+        <div class="tags" style="margin-top:10px;"><span class="tag">FacebookMessengerCLIAPI</span></div>
+      </div>
+    </div>
+
+    <div class="callout callout-info" style="margin-top:4px;">
+      <strong>Instagram DMs:</strong> Meta's API does not currently allow third-party tools to read or send Instagram Direct Messages reliably. Instagram DMs need to be handled manually or through Meta Business Suite. This may change as Meta updates its API access policies.
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">How It Works</div>
+    <h2>Automation Flow</h2>
+    <p class="section-desc">The same core logic applies to all three interaction types &mdash; trigger, draft, post, log.</p>
+
+    <div class="flow" style="margin-bottom:12px;">
+      <div class="flow-node primary">New Comment / Message</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Read Content</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Member Check</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Claude Drafts Reply</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Post Reply</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Log Row</div>
+    </div>
+
+    <ul class="steps">
+      <li class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h4>Trigger on new comment or message</h4>
+          <p>Zapier watches for new comments on Instagram posts, new comments on the Facebook Page, and new messages sent to the Facebook Page via Messenger. Each is a separate Zapier trigger but feeds into the same Claude drafting step.</p>
+          <div class="tags">
+            <span class="tag">InstagramBusinessCLIAPI</span>
+            <span class="tag">FacebookV2CLIAPI</span>
+            <span class="tag">FacebookMessengerCLIAPI</span>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h4>Check the member database</h4>
+          <p>Cross-reference the sender's username or linked account against the member database. If the sender is a sleeper member, do not reply automatically &mdash; flag for manual review and log the interaction.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h4>Claude drafts the reply</h4>
+          <p>Claude receives the original post or message content, the comment or message text, the platform, and the interaction type. It writes a reply that sounds natural, matches the energy of the comment, and stays in JustGym's voice. Short and direct for comments. Slightly warmer for messages.</p>
+          <div class="tags"><span class="tag">AnthropicCLIAPI</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h4>Post the reply</h4>
+          <p>The reply is posted directly as a comment reply on Instagram or Facebook, or sent as a Messenger response. No human approval step is needed for straightforward interactions &mdash; escalation handles edge cases.</p>
+          <div class="tags">
+            <span class="tag">InstagramBusinessCLIAPI</span>
+            <span class="tag">FacebookV2CLIAPI</span>
+            <span class="tag">FacebookMessengerCLIAPI</span>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h4>Log to Google Sheets</h4>
+          <p>Every interaction is recorded in the Social Responses sheet &mdash; platform, username, original message, reply sent, and outcome. Useful for spotting patterns and reviewing what Claude has said.</p>
+          <div class="tags"><span class="tag">GoogleSheetsV2CLIAPI</span></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Voice &amp; Tone</div>
+    <h2>How Claude Should Sound</h2>
+    <p class="section-desc">Social replies need to feel off-the-cuff, not corporate. Claude is briefed differently here than it is for email.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Comments (Instagram &amp; Facebook)</h3>
+        <p>
+          Keep it short &mdash; one or two sentences at most.<br /><br />
+          Match the energy of the comment. A hype comment gets an enthusiastic reply. A question gets a direct answer or a nudge to DM for more detail.<br /><br />
+          Use the person's name or handle where natural. Do not over-explain. No hashtags unless they were already in the original post.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Messages (Facebook Messenger)</h3>
+        <p>
+          Slightly warmer and more conversational than comment replies.<br /><br />
+          Answer the question directly if the Knowledge Base has the answer. If not, let them know someone will follow up shortly &mdash; do not leave them hanging with a non-answer.<br /><br />
+          Sign off naturally &mdash; no formal "Kind regards" style sign-off. Just the message.
+        </p>
+      </div>
+    </div>
+
+    <ul class="rules-list" style="margin-top:4px;">
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not reveal pricing, membership rates, or package details in public comments. Direct those questions to DMs or the website.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not respond to complaints or negative comments automatically. Flag for human review.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not engage with spam, promotional comments, or accounts with no profile picture and zero posts.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not mention competitors by name.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Never confirm or deny membership status for any individual in a public reply.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Emails from sleeper members should not be auto-replied to. Route to the human agent.</li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Escalation</div>
+    <h2>When to Route to a Human</h2>
+    <p class="section-desc">Not everything should be handled automatically. These cases go straight to the team.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Always Escalate</h3>
+        <p>
+          Complaints or negative sentiment<br />
+          Refund or cancellation requests<br />
+          Injury or health-related messages<br />
+          Any message that mentions legal action<br />
+          Sleeper member interactions<br />
+          Anything Claude cannot confidently answer
+        </p>
+      </div>
+      <div class="card">
+        <h3>How Escalation Works</h3>
+        <p>If the interaction meets any escalation condition, the automation skips the reply step and sends a WhatsApp alert to the team with the platform, username, and message content. The interaction is logged as <em>Escalated.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Logging</div>
+    <h2>What Gets Logged</h2>
+    <p class="section-desc">All social interactions are written to a dedicated Social Responses sheet in the shared Google Sheets log.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Column</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Date &amp; Time</td><td>Auto-timestamp</td></tr>
+          <tr><td>Platform</td><td>Instagram / Facebook Page / Facebook Messenger</td></tr>
+          <tr><td>Type</td><td>Comment / Message</td></tr>
+          <tr><td>Username</td><td>Sender handle or name</td></tr>
+          <tr><td>Original Content</td><td>The comment or message text</td></tr>
+          <tr><td>Reply Sent</td><td>Claude's reply, or N/A if escalated</td></tr>
+          <tr><td>Status</td><td>Replied Automatically / Escalated / Skipped</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="page-nav">
+    <a href="outbound.html">
+      <div class="pn-label">&larr; Previous</div>
+      <div class="pn-title">Outbound B2B Campaign</div>
+    </a>
+    <a href="stack.html" class="next">
+      <div class="pn-label">Next &rarr;</div>
+      <div class="pn-title">Tech Stack</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
