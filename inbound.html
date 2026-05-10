@@ -31,25 +31,6 @@
 
 <div class="main">
 
-  <!-- SLEEPER WARNING -->
-  <div class="section">
-    <div class="section-label">Critical Rule</div>
-    <h2>Sleeper Members</h2>
-    <p class="section-desc">This rule takes priority over everything else in this section.</p>
-
-    <div class="callout callout-warning">
-      <span class="callout-title">Absolute Rule &mdash; Do Not Contact Sleeper Members</span>
-      Under no circumstances should a sleeper member be contacted, prompted, or re-engaged through any automated email. If an inbound email is identified as coming from a sleeper member, it must be routed to a human agent immediately. The automation must never send content that could remind, encourage, or prompt a sleeper member to return or increase their usage.
-    </div>
-
-    <div class="card">
-      <h3>How to Identify a Sleeper Member</h3>
-      <p>Before the automation runs a Knowledge Base search or sends any reply, it must cross-reference the sender's email address against the member database. If the sender is flagged as a sleeper member, skip all further processing and escalate directly to the human agent via WhatsApp. Log the row in Google Sheets with Status set to <em>Escalated &mdash; Sleeper Member.</em></p>
-    </div>
-  </div>
-
-  <hr />
-
   <!-- HOW IT WORKS -->
   <div class="section">
     <div class="section-label">Automation Flow</div>
@@ -61,7 +42,7 @@
       <div class="flow-arrow">&#8594;</div>
       <div class="flow-node">Fetch Unread Emails</div>
       <div class="flow-arrow">&#8594;</div>
-      <div class="flow-node">Sleeper Check</div>
+      <div class="flow-node">Member Check</div>
       <div class="flow-arrow">&#8594;</div>
       <div class="flow-node">Knowledge Base Search</div>
       <div class="flow-arrow">&#8594;</div>
@@ -100,7 +81,7 @@
       <li class="rule-row"><span class="dash">&mdash;</span>Do not reference other members, member data, or any information about how the gym operates internally.</li>
       <li class="rule-row"><span class="dash">&mdash;</span>Keep replies concise. Answer the question directly. Do not pad with unnecessary filler.</li>
       <li class="rule-row"><span class="dash">&mdash;</span>Always sign off as <em>The Support Team</em> &mdash; never with an individual name or job title.</li>
-      <li class="rule-row danger"><span class="dash">&mdash;</span><strong>Sleeper members must never receive an automated reply under any circumstances. If the sender is a sleeper member, escalate to human immediately without sending anything.</strong></li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Emails from sleeper members should not be auto-replied to. Route to the human agent.</li>
     </ul>
   </div>
 
