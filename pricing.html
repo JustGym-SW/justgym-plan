@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — JustGym Plan</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .price-big {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .price-per {
+      font-size: 12px;
+      color: var(--text-faint);
+      font-weight: 500;
+      margin-top: 3px;
+    }
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 22px 24px;
+    }
+    .price-card .tool-name {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 4px;
+    }
+    .price-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .price-card .features {
+      list-style: none;
+      margin: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .price-card .features li {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .price-card .features li::before {
+      content: '\2013';
+      color: var(--border);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .price-card .upgrade-note {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+      font-size: 12px;
+      color: var(--text-faint);
+      line-height: 1.6;
+    }
+    .recommended {
+      border-color: var(--navy);
+      position: relative;
+    }
+    .recommended::before {
+      content: 'RECOMMENDED';
+      position: absolute;
+      top: -1px;
+      right: 20px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      padding: 3px 8px;
+    }
+    .total-bar {
+      background: var(--navy);
+      color: #fff;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 1px;
+    }
+    .total-bar .total-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 4px;
+    }
+    .total-bar .total-amount {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .total-bar .total-note {
+      font-size: 13px;
+      opacity: 0.65;
+      max-width: 400px;
+      line-height: 1.65;
+    }
+    .pill-free {
+      background: var(--green-bg);
+      color: var(--green-text);
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+    .tier-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 13px;
+    }
+    .tier-row:last-child { border-bottom: none; }
+    .tier-row .tier-name { color: var(--text-muted); }
+    .tier-row .tier-price { font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .tier-row .tier-price.free { color: var(--green-text); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">JustGym</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="gmail.html">Gmail</a>
+    <a href="inbound.html">Inbound</a>
+    <a href="outbound.html">Outbound</a>
+    <a href="social.html">Social</a>
+    <a href="stack.html">Tech Stack</a>
+    <a href="pricing.html" class="active">Pricing</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Overview</a><span>&rsaquo;</span> Pricing
+</div>
+
+<div class="page-header">
+  <div class="label">Section 06</div>
+  <h1>Pricing</h1>
+  <p>Every tool, every tier, and the minimum you need to get everything running. Recommended starting plan comes to around &pound;30 per month.</p>
+</div>
+
+<div class="main">
+
+  <!-- TOTAL -->
+  <div class="section">
+    <div class="section-label">Starting Cost</div>
+    <h2>Minimum Viable Plan</h2>
+    <p class="section-desc">What you pay from day one to run all three automations &mdash; inbound triage, outbound B2B, and social media.</p>
+
+    <div class="total-bar">
+      <div>
+        <div class="total-label">Monthly Total</div>
+        <div class="total-amount">&pound;30 &ndash; 35 / mo</div>
+      </div>
+      <div class="total-note">
+        Google Workspace + Zapier Starter + Claude API pay-as-you-go. Everything else starts free. Upgrade paths are noted on each tool below.
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:0;">
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Starting Plan</th>
+            <th>Monthly Cost</th>
+            <th>When to Upgrade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Google Workspace</strong></td>
+            <td>Business Starter</td>
+            <td>&pound;5.20</td>
+            <td>If you add more staff email accounts</td>
+          </tr>
+          <tr>
+            <td><strong>Zapier</strong></td>
+            <td>Starter</td>
+            <td>$19.99 (~&pound;16)</td>
+            <td>If task usage exceeds 750/month &mdash; watch this closely</td>
+          </tr>
+          <tr>
+            <td><strong>Claude API</strong></td>
+            <td>Pay per use</td>
+            <td>~$5 &ndash; 10 (~&pound;4 &ndash; 8)</td>
+            <td>Scales with usage, no plan needed</td>
+          </tr>
+          <tr>
+            <td><strong>ManyChat</strong></td>
+            <td>Free</td>
+            <td><span class="pill-free">Free</span></td>
+            <td>Over 1,000 Instagram/Facebook contacts</td>
+          </tr>
+          <tr>
+            <td><strong>Google Places API</strong></td>
+            <td>Free credit</td>
+            <td><span class="pill-free">Free</span></td>
+            <td>Very unlikely at this scale (&pound;200/mo credit)</td>
+          </tr>
+          <tr>
+            <td><strong>Hunter.io</strong></td>
+            <td>Free</td>
+            <td><span class="pill-free">Free</span></td>
+            <td>Over 25 email lookups/month &mdash; see note below</td>
+          </tr>
+          <tr>
+            <td><strong>WhatsApp Business API</strong></td>
+            <td>Meta Cloud API</td>
+            <td><span class="pill-free">Free</span></td>
+            <td>Over 1,000 business-initiated messages/month</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-info" style="margin-top:20px;">
+      <strong>Hunter free tier note:</strong> 25 email lookups per month covers about one day of outbound at full pace. To run the campaign daily, either upgrade Hunter to Starter ($34/month, 500 lookups) or run the outbound automation 2&ndash;3 days a week while testing. Adding Hunter Starter brings the monthly total to around <strong>&pound;60&ndash;65</strong>.
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- TOOL BY TOOL -->
+  <div class="section">
+    <div class="section-label">All Tools</div>
+    <h2>Full Pricing Breakdown</h2>
+    <p class="section-desc">Every tier for every tool. Highlighted card is the recommended starting plan.</p>
+
+    <!-- Google Workspace -->
+    <div class="section-label" style="margin-bottom:10px;">Google Workspace</div>
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="price-card recommended">
+        <div class="tool-name">Google Workspace</div>
+        <h3>Business Starter</h3>
+        <div class="price-big">&pound;5.20</div>
+        <div class="price-per">per user / month</div>
+        <ul class="features">
+          <li>Gmail with custom domain</li>
+          <li>Google Sheets &amp; Drive included</li>
+          <li>30 GB storage per user</li>
+          <li>Zapier OAuth integration</li>
+          <li>Google Cloud account (Places API)</li>
+        </ul>
+        <div class="upgrade-note">One user account covers everything needed for these automations.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">Google Workspace</div>
+        <h3>Business Standard</h3>
+        <div class="price-big">&pound;10.40</div>
+        <div class="price-per">per user / month</div>
+        <ul class="features">
+          <li>Everything in Starter</li>
+          <li>2 TB storage per user</li>
+          <li>Meeting recordings</li>
+          <li>Shared drives</li>
+        </ul>
+        <div class="upgrade-note">Only needed if storage or shared drives become a requirement.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">Google Workspace</div>
+        <h3>Business Plus</h3>
+        <div class="price-big">&pound;15.60</div>
+        <div class="price-per">per user / month</div>
+        <ul class="features">
+          <li>Everything in Standard</li>
+          <li>5 TB storage per user</li>
+          <li>Advanced security controls</li>
+          <li>eDiscovery &amp; audit</li>
+        </ul>
+        <div class="upgrade-note">Enterprise feature set. Not needed at this stage.</div>
+      </div>
+    </div>
+
+    <!-- Zapier -->
+    <div class="section-label" style="margin-bottom:10px;">Zapier</div>
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="price-card">
+        <div class="tool-name">Zapier</div>
+        <h3>Free</h3>
+        <div class="price-big">$0</div>
+        <div class="price-per">per month</div>
+        <ul class="features">
+          <li>5 Zaps</li>
+          <li>100 tasks / month</li>
+          <li>Single-step Zaps only</li>
+        </ul>
+        <div class="upgrade-note">Not viable. 100 tasks is gone in a day with the inbound automation alone.</div>
+      </div>
+      <div class="price-card recommended">
+        <div class="tool-name">Zapier</div>
+        <h3>Starter</h3>
+        <div class="price-big">$19.99</div>
+        <div class="price-per">per month (~&pound;16)</div>
+        <ul class="features">
+          <li>20 Zaps</li>
+          <li>750 tasks / month</li>
+          <li>Multi-step Zaps</li>
+          <li>Filters &amp; conditions</li>
+          <li>Webhooks included</li>
+        </ul>
+        <div class="upgrade-note">Workable if email volume stays moderate. Monitor task usage weekly in the first month.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">Zapier</div>
+        <h3>Professional</h3>
+        <div class="price-big">$49</div>
+        <div class="price-per">per month (~&pound;39)</div>
+        <ul class="features">
+          <li>Unlimited Zaps</li>
+          <li>2,000 tasks / month</li>
+          <li>Paths &amp; branching logic</li>
+          <li>Custom logic steps</li>
+          <li>Priority support</li>
+        </ul>
+        <div class="upgrade-note">Recommended once automations are running well and task limits are being hit.</div>
+      </div>
+    </div>
+
+    <!-- Claude API -->
+    <div class="section-label" style="margin-bottom:10px;">Claude API (Anthropic)</div>
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="price-card recommended">
+        <div class="tool-name">Claude API</div>
+        <h3>Pay Per Use</h3>
+        <div class="price-big">~$5&ndash;10</div>
+        <div class="price-per">per month at this scale (~&pound;4&ndash;8)</div>
+        <ul class="features">
+          <li>No monthly subscription</li>
+          <li>Charged per token (input + output)</li>
+          <li>Claude Haiku: cheapest, fast, good for short emails</li>
+          <li>Claude Sonnet: better quality, moderate cost</li>
+          <li>$5 free credit on sign-up</li>
+        </ul>
+        <div class="upgrade-note">At 20 outbound emails/day plus social replies, expect $5&ndash;15/month. Use Haiku for volume tasks to keep costs low.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">Claude API</div>
+        <h3>Haiku (Cheapest Model)</h3>
+        <div class="price-big">$0.80</div>
+        <div class="price-per">per million input tokens</div>
+        <ul class="features">
+          <li>Fastest response time</li>
+          <li>Best for short, repetitive tasks</li>
+          <li>Ideal for outbound email drafts</li>
+          <li>Good for social media replies</li>
+        </ul>
+        <div class="upgrade-note">Use this model for all automated drafting to minimise API costs.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">Claude API</div>
+        <h3>Sonnet (Recommended Model)</h3>
+        <div class="price-big">$3</div>
+        <div class="price-per">per million input tokens</div>
+        <ul class="features">
+          <li>Better reasoning and quality</li>
+          <li>Handles nuanced conversations</li>
+          <li>Good for complex DM replies</li>
+          <li>Slightly slower than Haiku</li>
+        </ul>
+        <div class="upgrade-note">Use Sonnet for inbound support replies where quality matters more than speed.</div>
+      </div>
+    </div>
+
+    <!-- ManyChat -->
+    <div class="section-label" style="margin-bottom:10px;">ManyChat</div>
+    <div class="grid-2" style="margin-bottom:32px;">
+      <div class="price-card recommended">
+        <div class="tool-name">ManyChat</div>
+        <h3>Free</h3>
+        <div class="price-big">$0</div>
+        <div class="price-per">per month</div>
+        <ul class="features">
+          <li>Up to 1,000 contacts</li>
+          <li>Instagram DMs &amp; comment-to-DM flows</li>
+          <li>Facebook Messenger automation</li>
+          <li>Keyword triggers</li>
+          <li>Zapier integration</li>
+          <li>Basic flow builder</li>
+        </ul>
+        <div class="upgrade-note">More than enough to start. Only upgrade when contacts exceed 1,000.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">ManyChat</div>
+        <h3>Pro</h3>
+        <div class="price-big">$15</div>
+        <div class="price-per">per month (~&pound;12)</div>
+        <ul class="features">
+          <li>Unlimited contacts</li>
+          <li>AI-powered reply features</li>
+          <li>Advanced flow conditions</li>
+          <li>Email &amp; SMS channels</li>
+          <li>A/B testing</li>
+          <li>Priority support</li>
+        </ul>
+        <div class="upgrade-note">AI features on the Pro plan can reduce Claude API usage for simpler replies.</div>
+      </div>
+    </div>
+
+    <!-- Hunter -->
+    <div class="section-label" style="margin-bottom:10px;">Hunter.io</div>
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="price-card recommended">
+        <div class="tool-name">Hunter.io</div>
+        <h3>Free</h3>
+        <div class="price-big">$0</div>
+        <div class="price-per">per month</div>
+        <ul class="features">
+          <li>25 email searches / month</li>
+          <li>25 email verifications / month</li>
+          <li>Zapier integration</li>
+        </ul>
+        <div class="upgrade-note">Start here. Covers roughly one day of full outbound pace. Run the campaign 2&ndash;3 days/week to stay within the limit while testing.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">Hunter.io</div>
+        <h3>Starter</h3>
+        <div class="price-big">$34</div>
+        <div class="price-per">per month (~&pound;27)</div>
+        <ul class="features">
+          <li>500 searches / month</li>
+          <li>500 verifications / month</li>
+          <li>Enough for 25 businesses/day</li>
+        </ul>
+        <div class="upgrade-note">Upgrade to this once the outbound campaign is running daily and producing results.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">Hunter.io</div>
+        <h3>Growth</h3>
+        <div class="price-big">$104</div>
+        <div class="price-per">per month (~&pound;82)</div>
+        <ul class="features">
+          <li>5,000 searches / month</li>
+          <li>Full team access</li>
+          <li>Bulk tasks</li>
+        </ul>
+        <div class="upgrade-note">Only needed at high outreach volume. Not required at this stage.</div>
+      </div>
+    </div>
+
+    <!-- Free Tools -->
+    <div class="section-label" style="margin-bottom:10px;">Free Tools</div>
+    <div class="grid-3" style="margin-bottom:0;">
+      <div class="price-card">
+        <div class="tool-name">Google Places API</div>
+        <h3>Free Credit</h3>
+        <div class="price-big">$0</div>
+        <div class="price-per">effective monthly cost</div>
+        <ul class="features">
+          <li>$200 free Google Cloud credit / month</li>
+          <li>Places search: ~$0.032 per call</li>
+          <li>$200 credit = ~6,200 searches free</li>
+          <li>20 searches/day = ~$0.64/month</li>
+        </ul>
+        <div class="upgrade-note">Will not cost anything at this scale. Requires a Google Cloud account with billing enabled (won't charge within the credit).</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">WhatsApp Business</div>
+        <h3>Meta Cloud API</h3>
+        <div class="price-big">$0</div>
+        <div class="price-per">per month to start</div>
+        <ul class="features">
+          <li>1,000 free conversations / month</li>
+          <li>Business-initiated messages: ~$0.05 each after free tier</li>
+          <li>Requires Meta Business account</li>
+          <li>Free tier covers all escalation alerts</li>
+        </ul>
+        <div class="upgrade-note">1,000 escalation alerts per month is far more than needed. Effectively free.</div>
+      </div>
+      <div class="price-card">
+        <div class="tool-name">Google Sheets</div>
+        <h3>Included in Workspace</h3>
+        <div class="price-big">$0</div>
+        <div class="price-per">additional cost</div>
+        <ul class="features">
+          <li>Included with Google Workspace</li>
+          <li>Shared automation log</li>
+          <li>Three sheets: Inbound, Outbound, Social</li>
+          <li>Zapier reads and writes automatically</li>
+        </ul>
+        <div class="upgrade-note">No extra cost. Already covered by the Workspace subscription.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- UPGRADE PATH -->
+  <div class="section">
+    <div class="section-label">Growth Path</div>
+    <h2>When to Upgrade</h2>
+    <p class="section-desc">Start cheap, watch these signals, upgrade when they trigger.</p>
+
+    <ul class="steps">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Zapier Starter &rarr; Professional ($49/mo)</h4>
+          <p>When your Zapier task count hits 600+ per month or you need more than 20 Zaps. Check the Zapier dashboard weekly in the first month. The Professional plan also unlocks branching logic which makes automations smarter.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Hunter Free &rarr; Starter ($34/mo)</h4>
+          <p>When the outbound campaign is running daily and producing replies or conversions. The free tier is fine for testing at 2&ndash;3 days a week. Starter gives 500 searches/month which covers a daily cap of 20 businesses comfortably.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>ManyChat Free &rarr; Pro ($15/mo)</h4>
+          <p>When your combined Instagram and Facebook contact count approaches 1,000. The Pro plan also has built-in AI reply features that can handle simpler social interactions without calling Claude, which reduces API costs.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Make (Integromat) as a Zapier alternative</h4>
+          <p>If Zapier costs become a concern, Make offers 10,000 operations per month for $9. The interface is different but it handles all the same integrations. Worth switching if you are consistently on Zapier Professional and want to cut that cost significantly.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="page-nav">
+    <a href="stack.html">
+      <div class="pn-label">&larr; Previous</div>
+      <div class="pn-title">Tech Stack</div>
+    </a>
+    <a href="index.html" class="next">
+      <div class="pn-label">Back to start</div>
+      <div class="pn-title">Overview</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
