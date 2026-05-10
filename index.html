@@ -4,169 +4,197 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JustGym — Automation & Growth Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f5f4f0;
+      --bg: #f2f0eb;
       --surface: #ffffff;
-      --border: #d8d5cc;
-      --border-light: #e8e5dc;
-      --text: #1a1a1a;
-      --text-muted: #5a5a5a;
-      --text-faint: #8a8a8a;
-      --accent: #1c3a5e;
-      --accent-light: #e8eef5;
+      --border: #ccc9bf;
+      --border-light: #e0ddd5;
+      --text: #111111;
+      --text-muted: #444444;
+      --text-faint: #888888;
+      --navy: #1a2e4a;
+      --navy-light: #eaecf0;
+      --red-bg: #fdf0f0;
+      --red-border: #e08080;
+      --red-text: #7a1a1a;
       --green-bg: #edf5ed;
-      --green-text: #2d6a2d;
-      --orange-bg: #fdf3e8;
-      --orange-text: #7a4a0a;
-      --font: Georgia, 'Times New Roman', serif;
-      --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --green-text: #245924;
+      --amber-bg: #fdf5e6;
+      --amber-text: #6b4400;
+      --font: 'Eurostile', 'Exo 2', 'Helvetica Neue', Arial, sans-serif;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 14px;
-      line-height: 1.7;
-      padding-bottom: 80px;
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.75;
+      padding-bottom: 100px;
     }
 
     /* NAV */
     nav {
-      background: var(--accent);
-      padding: 0 40px;
+      background: var(--navy);
+      padding: 0 48px;
       display: flex;
       align-items: center;
-      gap: 32px;
-      height: 52px;
+      gap: 40px;
+      height: 54px;
     }
-    nav .logo {
-      font-family: var(--font);
-      font-size: 16px;
-      font-weight: bold;
-      color: #ffffff;
+    .logo {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
       text-decoration: none;
-      letter-spacing: 0.3px;
-      white-space: nowrap;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
-    nav a {
-      color: rgba(255,255,255,0.65);
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.6);
       text-decoration: none;
-      font-size: 13px;
-    }
-    nav a:hover { color: #ffffff; }
-    .nav-links { display: flex; gap: 28px; }
-
-    /* HERO */
-    .hero {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 52px 40px 44px;
-      max-width: 960px;
-      margin: 0 auto 0;
-    }
-    .hero .label {
-      font-size: 11px;
-      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    /* HEADER BAND */
+    .header {
+      background: var(--surface);
+      border-bottom: 2px solid var(--navy);
+      padding: 56px 48px 48px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .header .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--text-faint);
-      margin-bottom: 14px;
-    }
-    .hero h1 {
-      font-family: var(--font);
-      font-size: 38px;
-      font-weight: normal;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
       margin-bottom: 16px;
-      color: var(--text);
     }
-    .hero p {
-      font-size: 15px;
+    .header h1 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+    .header p {
+      font-size: 16px;
       color: var(--text-muted);
-      max-width: 560px;
-      line-height: 1.75;
+      max-width: 600px;
+      line-height: 1.8;
     }
 
     /* MAIN */
     .main {
-      max-width: 960px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 40px 40px 0;
+      padding: 52px 48px 0;
     }
 
     /* SECTION */
-    .section { margin-bottom: 56px; }
-    .section-title {
-      font-family: var(--font);
-      font-size: 24px;
-      font-weight: normal;
-      color: var(--text);
-      margin-bottom: 6px;
+    .section { margin-bottom: 64px; }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 8px;
     }
-    .section-sub {
-      font-size: 13px;
+    .section-heading h2 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--navy);
+    }
+    .section-heading .section-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       color: var(--text-faint);
-      margin-bottom: 24px;
-      padding-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 14px;
+      color: var(--text-faint);
+      margin-bottom: 28px;
+      padding-bottom: 20px;
       border-bottom: 1px solid var(--border);
     }
 
-    /* CALLOUT */
+    /* CALLOUTS */
     .callout {
-      background: var(--accent-light);
-      border-left: 3px solid var(--accent);
-      padding: 14px 18px;
+      padding: 16px 20px;
       margin-bottom: 20px;
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.65;
+      font-size: 14px;
+      line-height: 1.7;
     }
-    .callout strong { color: var(--text); }
+    .callout-info {
+      background: var(--navy-light);
+      border-left: 4px solid var(--navy);
+      color: var(--text-muted);
+    }
+    .callout-info strong { color: var(--navy); }
+
+    .callout-warning {
+      background: var(--red-bg);
+      border-left: 4px solid var(--red-border);
+      color: var(--red-text);
+    }
+    .callout-warning strong { color: var(--red-text); font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
 
     /* STEPS */
-    .steps { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .steps { list-style: none; }
     .step {
       display: flex;
-      align-items: flex-start;
-      gap: 0;
+      gap: 20px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-bottom: none;
-      padding: 18px 20px;
+      border-top: none;
+      padding: 20px 24px;
     }
-    .steps .step:first-child { border-radius: 4px 4px 0 0; }
-    .steps .step:last-child  { border-bottom: 1px solid var(--border); border-radius: 0 0 4px 4px; }
+    .steps .step:first-child { border-top: 1px solid var(--border); }
     .step-num {
-      width: 24px;
-      min-width: 24px;
-      font-size: 12px;
-      font-weight: 700;
-      font-family: var(--font-sans);
-      color: var(--accent);
-      margin-top: 2px;
-      margin-right: 14px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+      min-width: 20px;
+      padding-top: 1px;
+      letter-spacing: 0.5px;
     }
     .step-body h4 {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
-      font-family: var(--font-sans);
       color: var(--text);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
-    .step-body p { font-size: 13px; color: var(--text-muted); }
-    .tags { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 5px; }
+    .step-body p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
     .tag {
       background: var(--bg);
       border: 1px solid var(--border);
       color: var(--text-faint);
       font-size: 11px;
       font-family: monospace;
-      padding: 2px 7px;
-      border-radius: 3px;
+      padding: 2px 8px;
+      letter-spacing: 0.3px;
     }
 
     /* FLOW */
@@ -174,110 +202,116 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0;
-      padding: 16px 20px;
+      row-gap: 8px;
+      padding: 18px 22px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 4px;
       margin-bottom: 20px;
     }
     .flow-node {
       background: var(--bg);
       border: 1px solid var(--border);
-      padding: 6px 12px;
+      padding: 7px 14px;
       font-size: 12px;
-      font-family: var(--font-sans);
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       color: var(--text);
-      border-radius: 3px;
     }
-    .flow-node.primary {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-    .flow-arrow {
-      color: var(--border);
-      font-size: 14px;
-      padding: 0 6px;
-    }
+    .flow-node.primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .flow-arrow { color: var(--border); padding: 0 8px; font-size: 15px; }
 
     /* GRID */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-bottom: 1px; }
     @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
 
     /* CARD */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 18px 20px;
+      padding: 20px 24px;
+      margin-bottom: 1px;
     }
     .card h3 {
       font-size: 13px;
       font-weight: 700;
-      font-family: var(--font-sans);
-      color: var(--text);
-      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 8px;
     }
-    .card p { font-size: 13px; color: var(--text-muted); }
+    .card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
-    /* STATUS PILLS */
+    /* RULES LIST */
+    .rules {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .rule-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 22px;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .rule-item:last-child { border-bottom: none; }
+    .rule-item .bullet {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 16px;
+      line-height: 1.5;
+      min-width: 12px;
+    }
+
+    /* STATUS */
     .pill {
       display: inline-block;
       font-size: 11px;
-      font-weight: 600;
-      font-family: var(--font-sans);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
       padding: 2px 8px;
-      border-radius: 3px;
     }
     .pill-green  { background: var(--green-bg);  color: var(--green-text);  }
-    .pill-orange { background: var(--orange-bg); color: var(--orange-text); }
+    .pill-amber  { background: var(--amber-bg);  color: var(--amber-text);  }
 
     /* TABLE */
-    .table-wrap {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow-x: auto;
-      margin-top: 16px;
-    }
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .table-wrap { border: 1px solid var(--border); overflow-x: auto; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
     th {
       background: var(--bg);
       color: var(--text-faint);
-      font-weight: 600;
       font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
-      padding: 9px 16px;
+      letter-spacing: 1px;
+      padding: 10px 18px;
       text-align: left;
       border-bottom: 1px solid var(--border);
-      font-family: var(--font-sans);
     }
     td {
-      padding: 11px 16px;
+      padding: 13px 18px;
       border-bottom: 1px solid var(--border-light);
       color: var(--text-muted);
       vertical-align: top;
+      line-height: 1.65;
     }
     td strong { color: var(--text); }
     td code {
       font-size: 11px;
       background: var(--bg);
       border: 1px solid var(--border);
-      padding: 1px 5px;
-      border-radius: 2px;
-      color: var(--accent);
+      padding: 1px 6px;
+      color: var(--navy);
+      font-family: monospace;
     }
     tr:last-child td { border-bottom: none; }
 
     /* DIVIDER */
-    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    hr { border: none; border-top: 2px solid var(--border); margin: 56px 0; }
   </style>
 </head>
 <body>
@@ -285,16 +319,16 @@
 <nav>
   <a class="logo" href="#">JustGym</a>
   <div class="nav-links">
-    <a href="#gmail">Gmail Migration</a>
+    <a href="#gmail">Gmail</a>
     <a href="#inbound">Inbound</a>
     <a href="#outbound">Outbound</a>
     <a href="#stack">Tech Stack</a>
   </div>
 </nav>
 
-<div class="hero">
+<div class="header">
   <div class="label">Internal Plan &mdash; May 2026</div>
-  <h1>Automation &amp; Growth Plan</h1>
+  <h1>Automation &amp;<br />Growth Plan</h1>
   <p>Moving to Gmail, automating inbound support, and launching a local B2B outreach campaign &mdash; all powered by Claude AI and Zapier.</p>
 </div>
 
@@ -302,58 +336,61 @@
 
   <!-- GMAIL MIGRATION -->
   <section class="section" id="gmail">
-    <h2 class="section-title">Moving to Gmail</h2>
-    <p class="section-sub">Centralise all communication into Google Workspace</p>
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Moving to Gmail</h2>
+    </div>
+    <p class="section-desc">Centralise all communication into Google Workspace so every automation connects from a single account.</p>
 
-    <div class="callout">
-      <strong>Why Gmail?</strong> All automations (inbound triage, outbound outreach, logging) connect directly to Gmail via Zapier with no extra setup. One account, one inbox, full automation.
+    <div class="callout callout-info">
+      <strong>Why Gmail?</strong> All automations &mdash; inbound triage, outbound outreach, and logging &mdash; connect directly to Gmail via Zapier with no extra configuration. One account, one inbox, full automation.
     </div>
 
     <ul class="steps">
       <li class="step">
-        <div class="step-num">1</div>
+        <div class="step-num">01</div>
         <div class="step-body">
           <h4>Set up Google Workspace</h4>
-          <p>Sign up for Google Workspace (Business Starter from &pound;5.20/user/month). Use your existing domain (e.g. hello@justgym.co.uk). This gives you Gmail, Sheets, and Drive &mdash; everything the automations need.</p>
+          <p>Sign up for Google Workspace Business Starter from &pound;5.20 per user per month. Use your existing domain such as hello@justgym.co.uk. This provides Gmail, Sheets, and Drive &mdash; everything the automations require.</p>
           <div class="tags"><span class="tag">workspace.google.com</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">2</div>
+        <div class="step-num">02</div>
         <div class="step-body">
-          <h4>Set up two Gmail inboxes</h4>
-          <p>Create two addresses: <strong>support@justgym.co.uk</strong> for inbound triage and <strong>outreach@justgym.co.uk</strong> for the B2B campaign. Keep them separate so the automations do not conflict.</p>
+          <h4>Create two separate inboxes</h4>
+          <p>Set up <strong>support@justgym.co.uk</strong> for inbound member enquiries and <strong>outreach@justgym.co.uk</strong> for the B2B campaign. Keeping them separate ensures the automations never conflict with each other.</p>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">3</div>
+        <div class="step-num">03</div>
         <div class="step-body">
           <h4>Migrate existing emails</h4>
-          <p>Use the Google Workspace Migration Tool or forward existing emails. Export from your current provider as MBOX and import via Google Takeout. Historical emails remain accessible.</p>
+          <p>Export from your current provider as MBOX and import using the Google Workspace Migration Tool. All historical emails remain accessible. Google provides step-by-step instructions for every major email provider.</p>
           <div class="tags"><span class="tag">Google Migration Tool</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">4</div>
+        <div class="step-num">04</div>
         <div class="step-body">
           <h4>Update DNS records</h4>
-          <p>Add Google MX records in your domain registrar. Takes 24&ndash;48 hours to propagate. Google Workspace provides step-by-step instructions per registrar (GoDaddy, Cloudflare, etc.).</p>
+          <p>Add Google MX records at your domain registrar. Propagation takes 24 to 48 hours. Also add SPF and DMARC records at the same time to protect your sender reputation from day one.</p>
           <div class="tags"><span class="tag">MX Records</span><span class="tag">SPF</span><span class="tag">DMARC</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">5</div>
+        <div class="step-num">05</div>
         <div class="step-body">
-          <h4>Connect Gmail to Zapier</h4>
-          <p>In Zapier, connect both Gmail accounts. Zapier handles OAuth automatically &mdash; no passwords stored, uses Google secure login. Both automations will then be ready to enable.</p>
+          <h4>Connect both Gmail accounts to Zapier</h4>
+          <p>Zapier handles authentication via Google OAuth &mdash; no passwords stored. Connect both the support and outreach inboxes. All automations will be ready to activate immediately after.</p>
           <div class="tags"><span class="tag">GoogleMailV2CLIAPI</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">6</div>
+        <div class="step-num">06</div>
         <div class="step-body">
           <h4>Create the Google Sheets log</h4>
-          <p>In Google Drive, create a spreadsheet called <strong>JustGym &mdash; Automation Log</strong>. Add two sheets: Inbound Triage and Outbound Outreach. Connect it to Zapier.</p>
+          <p>In Google Drive, create a spreadsheet called <strong>JustGym &mdash; Automation Log</strong> with two sheets: Inbound Triage and Outbound Outreach. Connect to Zapier so both automations can write rows automatically.</p>
           <div class="tags"><span class="tag">GoogleSheetsV2CLIAPI</span></div>
         </div>
       </li>
@@ -364,13 +401,23 @@
 
   <!-- INBOUND -->
   <section class="section" id="inbound">
-    <h2 class="section-title">Inbound: Email Triage</h2>
-    <p class="section-sub">Runs every hour &mdash; auto-reply or escalate every support email</p>
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Inbound Email Strategy</h2>
+    </div>
+    <p class="section-desc">Runs every hour automatically &mdash; every inbound email is either answered from the Knowledge Base or escalated to a human agent.</p>
+
+    <div class="callout callout-warning">
+      <strong>Absolute Rule &mdash; Sleeper Members</strong><br />
+      Under no circumstances should a sleeper member be contacted, prompted, or re-engaged through any automated email. If an inbound email is identified as coming from a sleeper member, it must be escalated to a human agent immediately and not auto-replied to. The automation must never send content that could remind or encourage a sleeper member to return.
+    </div>
 
     <div class="flow">
       <div class="flow-node primary">Every Hour</div>
       <div class="flow-arrow">&#8594;</div>
       <div class="flow-node">Fetch Unread</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Check: Sleeper?</div>
       <div class="flow-arrow">&#8594;</div>
       <div class="flow-node">Knowledge Base</div>
       <div class="flow-arrow">&#8594;</div>
@@ -384,17 +431,24 @@
     <div class="grid-2">
       <div class="card">
         <h3>Auto-Replied</h3>
-        <p>Knowledge Base match found. Claude drafts a client-safe reply using only KB content. Logged as <span class="pill pill-green">Resolved Automatically</span></p>
+        <p>Knowledge Base match found and sender is not a sleeper member. Claude drafts a client-safe reply. Logged as <span class="pill pill-green">Resolved Automatically</span></p>
       </div>
       <div class="card">
-        <h3>Escalated</h3>
-        <p>No match found. Human agent alerted via WhatsApp with full email details. Logged as <span class="pill pill-orange">Escalated to Human</span></p>
+        <h3>Escalated to Human</h3>
+        <p>No KB match found, or sender is a sleeper member. Human agent alerted via WhatsApp. Logged as <span class="pill pill-amber">Escalated to Human</span></p>
       </div>
     </div>
 
-    <div class="card" style="margin-bottom:16px;">
-      <h3>Reply Rules</h3>
-      <p>All auto-replies use Knowledge Base content only. No internal names, system details, agent information, or mention of AI or automation. Always signed off as &ldquo;The Support Team.&rdquo;</p>
+    <div class="card" style="margin-top:0;">
+      <h3>Email Reply Rules</h3>
+      <div class="rules" style="border:none; margin:8px 0 0;">
+        <div class="rule-item"><span class="bullet">&mdash;</span>Replies must use Knowledge Base content only. Do not add information not present in the Knowledge Base.</div>
+        <div class="rule-item"><span class="bullet">&mdash;</span>Do not include internal staff names, team names, department names, or system names.</div>
+        <div class="rule-item"><span class="bullet">&mdash;</span>Do not mention AI, automation, Zapier, or any internal tooling.</div>
+        <div class="rule-item"><span class="bullet">&mdash;</span>Do not include pricing, promotions, or offers of any kind unless the Knowledge Base explicitly states them.</div>
+        <div class="rule-item"><span class="bullet">&mdash;</span>Always sign off as <em>The Support Team</em> &mdash; never with an individual name.</div>
+        <div class="rule-item" style="background:var(--red-bg); color:var(--red-text);"><span class="bullet" style="color:var(--red-text);">&mdash;</span><strong>Sleeper members must never receive an automated reply under any circumstances. Route to human immediately.</strong></div>
+      </div>
     </div>
 
     <div class="table-wrap">
@@ -419,19 +473,22 @@
 
   <!-- OUTBOUND -->
   <section class="section" id="outbound">
-    <h2 class="section-title">Outbound: B2B Staff Benefits Campaign</h2>
-    <p class="section-sub">Daily at 9:00 AM &mdash; find local businesses, draft personalised pitches with Claude, send and track</p>
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Outbound B2B Campaign</h2>
+    </div>
+    <p class="section-desc">Runs daily at 9:00 AM &mdash; finds local businesses, sources contact emails, has Claude draft a personalised pitch, and logs every attempt.</p>
 
-    <div class="callout">
-      <strong>Apollo is not needed.</strong> Apollo is built for large global B2B databases. For local businesses within a radius of your gym, SerpAPI (Google Maps) is better &mdash; it searches by proximity and returns live results. It is cheaper and more geographically relevant.
+    <div class="callout callout-info">
+      <strong>Apollo is not required.</strong> Apollo is designed for large global B2B databases. For finding businesses near a specific location, SerpAPI (Google Maps) is more accurate, faster to set up, and significantly cheaper. It searches by radius and returns live results.
     </div>
 
     <div class="flow">
       <div class="flow-node primary">9:00 AM Daily</div>
       <div class="flow-arrow">&#8594;</div>
-      <div class="flow-node">SerpAPI (Maps)</div>
+      <div class="flow-node">SerpAPI</div>
       <div class="flow-arrow">&#8594;</div>
-      <div class="flow-node">Hunter (Email)</div>
+      <div class="flow-node">Hunter.io</div>
       <div class="flow-arrow">&#8594;</div>
       <div class="flow-node">Check Log</div>
       <div class="flow-arrow">&#8594;</div>
@@ -444,63 +501,63 @@
 
     <ul class="steps">
       <li class="step">
-        <div class="step-num">1</div>
+        <div class="step-num">01</div>
         <div class="step-body">
-          <h4>Find local businesses &mdash; SerpAPI</h4>
-          <p>SerpAPI queries Google Maps for businesses within your target radius. Filter by type: offices, retail, hospitality, healthcare, tech. Returns business name, address, website, phone, and category.</p>
+          <h4>Find local businesses via SerpAPI</h4>
+          <p>SerpAPI queries Google Maps for businesses within your target radius. Filter by type: offices, retail, hospitality, healthcare, tech. Returns business name, address, website, phone, and category. No manual searching required.</p>
           <div class="tags"><span class="tag">SerpAPI</span><span class="tag">Google Maps</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">2</div>
+        <div class="step-num">02</div>
         <div class="step-body">
-          <h4>Find contact email &mdash; Hunter.io</h4>
-          <p>Pass the business website to Hunter to find a verified contact email. Target titles: HR Manager, Office Manager, Director, MD, Owner. Skip the business if no verified email is found and log as No Email Found.</p>
-          <div class="tags"><span class="tag">Hunter</span></div>
+          <h4>Find a verified contact email via Hunter.io</h4>
+          <p>Pass the business website to Hunter to locate a verified email for the decision maker. Target titles: HR Manager, Office Manager, Director, MD, Owner. If no verified email is found, skip the business and log it as No Email Found.</p>
+          <div class="tags"><span class="tag">Hunter.io</span><span class="tag">EmailHunterCLIAPI</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">3</div>
+        <div class="step-num">03</div>
         <div class="step-body">
-          <h4>Check for recent contact &mdash; Google Sheets</h4>
-          <p>Before sending, check the outreach log. Skip any business contacted in the last 90 days. Prevents duplicate outreach and protects sender reputation.</p>
+          <h4>Check for recent contact in Google Sheets</h4>
+          <p>Before sending, check the outreach log for the business name and email. Skip any business contacted in the last 90 days. This protects sender reputation and avoids annoying potential leads.</p>
           <div class="tags"><span class="tag">Google Sheets</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">4</div>
+        <div class="step-num">04</div>
         <div class="step-body">
-          <h4>Claude drafts the email</h4>
-          <p>Claude receives business name, contact name, industry, and employee count. It writes a short (&lt;150 words), human, personalised pitch referencing their industry or team size. No pricing, no guarantees, no template feel. Signs off as JustGym Team.</p>
-          <div class="tags"><span class="tag">Claude (Anthropic)</span></div>
+          <h4>Claude writes the email</h4>
+          <p>Claude receives the business name, contact name, industry, and employee count. It writes a short personalised pitch under 150 words that references their specific industry or team size. No pricing, no guarantees, no template tone. Signs off as JustGym Team.</p>
+          <div class="tags"><span class="tag">Claude (Anthropic)</span><span class="tag">AnthropicCLIAPI</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">5</div>
+        <div class="step-num">05</div>
         <div class="step-body">
-          <h4>Send via Gmail</h4>
-          <p>Sends from outreach@justgym.co.uk &mdash; separate from the support inbox. Subject line is fixed: &ldquo;A staff perk your team will actually use &mdash; JustGym.&rdquo; Daily cap: 20 emails maximum.</p>
-          <div class="tags"><span class="tag">Gmail</span></div>
+          <h4>Send from outreach inbox</h4>
+          <p>Emails are sent from <strong>outreach@justgym.co.uk</strong>, keeping the support inbox clean. Subject line is fixed: <em>A staff perk your team will actually use &mdash; JustGym.</em> Hard daily cap of 20 emails to stay within Gmail limits.</p>
+          <div class="tags"><span class="tag">Gmail</span><span class="tag">GoogleMailV2CLIAPI</span></div>
         </div>
       </li>
       <li class="step">
-        <div class="step-num">6</div>
+        <div class="step-num">06</div>
         <div class="step-body">
-          <h4>Log to Google Sheets</h4>
-          <p>Every attempt (sent, skipped, no email found) is recorded with timestamp, business details, contact info, and status.</p>
+          <h4>Log every attempt to Google Sheets</h4>
+          <p>Every business processed is recorded regardless of outcome &mdash; sent, skipped, no email found. This builds a full picture of outreach history and prevents duplicates.</p>
           <div class="tags"><span class="tag">Google Sheets</span></div>
         </div>
       </li>
     </ul>
 
-    <div class="grid-2" style="margin-top:16px;">
+    <div class="grid-2" style="margin-top:20px;">
       <div class="card">
         <h3>Target Profile</h3>
-        <p>Local businesses within radius &bull; 5&ndash;200 employees &bull; Offices, retail, hospitality, healthcare, tech &bull; Decision maker: HR Manager, Office Manager, MD, Director</p>
+        <p>Local businesses within radius &bull; 5 to 200 employees &bull; Offices, retail, hospitality, healthcare, tech &bull; Decision makers: HR Manager, Office Manager, MD, Director</p>
       </div>
       <div class="card">
         <h3>Safeguards</h3>
-        <p>Maximum 20 emails per day &bull; Skip if contacted within 90 days &bull; Skip businesses under 5 employees &bull; No pricing or guarantees in email copy</p>
+        <p>Maximum 20 emails per day &bull; Skip if contacted within 90 days &bull; Skip businesses under 5 employees &bull; No pricing or guarantees in any email copy</p>
       </div>
     </div>
 
@@ -527,10 +584,13 @@
 
   <!-- TECH STACK -->
   <section class="section" id="stack">
-    <h2 class="section-title">Tech Stack</h2>
-    <p class="section-sub">All tools, Zapier IDs, costs, and how they connect</p>
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Tech Stack</h2>
+    </div>
+    <p class="section-desc">Every tool used, its Zapier App ID, cost, and how it authenticates.</p>
 
-    <div class="table-wrap">
+    <div class="table-wrap" style="margin-top:0;">
       <table>
         <thead>
           <tr>
@@ -552,7 +612,7 @@
           <tr>
             <td><strong>Google Sheets</strong></td>
             <td><code>GoogleSheetsV2CLIAPI</code></td>
-            <td>Log all inbound and outbound interactions</td>
+            <td>Log all inbound and outbound activity</td>
             <td>Included in Workspace</td>
             <td>Google OAuth</td>
           </tr>
@@ -574,7 +634,7 @@
             <td><strong>SerpAPI</strong></td>
             <td>Direct API</td>
             <td>Find local businesses via Google Maps by radius</td>
-            <td>Free: 100 searches/month &bull; Paid from $50/mo</td>
+            <td>Free: 100 searches/month &bull; Paid from $50/month</td>
             <td>API key</td>
           </tr>
           <tr>
@@ -591,11 +651,21 @@
     <div class="grid-2" style="margin-top:20px;">
       <div class="card">
         <h3>Zapier Skills</h3>
-        <p><strong>Hourly Email Triage &amp; Auto-Reply</strong> &mdash; inbound support automation<br /><br /><strong>B2B Staff Benefits Outreach</strong> &mdash; daily outbound campaign</p>
+        <p>
+          <strong>Hourly Email Triage &amp; Auto-Reply</strong><br />
+          Inbound support automation<br /><br />
+          <strong>B2B Staff Benefits Outreach</strong><br />
+          Daily outbound campaign
+        </p>
       </div>
       <div class="card">
-        <h3>Documents</h3>
-        <p><code>Documents/JustGym-Automations.md</code><br />Full automation overview<br /><br /><code>Documents/JUSTGYM/Marketing/outbound-b2b-outreach.md</code><br />Outbound campaign brief</p>
+        <h3>Plan Documents</h3>
+        <p>
+          <code>Documents/JustGym-Automations.md</code><br />
+          Full automation overview<br /><br />
+          <code>Documents/JUSTGYM/Marketing/<br />outbound-b2b-outreach.md</code><br />
+          Outbound campaign brief
+        </p>
       </div>
     </div>
   </section>
