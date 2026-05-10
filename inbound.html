@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inbound Email Strategy — JustGym Plan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">JustGym</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="gmail.html">Gmail</a>
+    <a href="inbound.html" class="active">Inbound</a>
+    <a href="outbound.html">Outbound</a>
+    <a href="stack.html">Tech Stack</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Overview</a><span>&rsaquo;</span> Inbound Email Strategy
+</div>
+
+<div class="page-header">
+  <div class="label">Section 02</div>
+  <h1>Inbound Email Strategy</h1>
+  <p>Every hour, the automation reads new emails in the support inbox, checks the Knowledge Base, and either sends a safe auto-reply or escalates to a human agent via WhatsApp. Everything is logged.</p>
+</div>
+
+<div class="main">
+
+  <!-- SLEEPER WARNING -->
+  <div class="section">
+    <div class="section-label">Critical Rule</div>
+    <h2>Sleeper Members</h2>
+    <p class="section-desc">This rule takes priority over everything else in this section.</p>
+
+    <div class="callout callout-warning">
+      <span class="callout-title">Absolute Rule &mdash; Do Not Contact Sleeper Members</span>
+      Under no circumstances should a sleeper member be contacted, prompted, or re-engaged through any automated email. If an inbound email is identified as coming from a sleeper member, it must be routed to a human agent immediately. The automation must never send content that could remind, encourage, or prompt a sleeper member to return or increase their usage.
+    </div>
+
+    <div class="card">
+      <h3>How to Identify a Sleeper Member</h3>
+      <p>Before the automation runs a Knowledge Base search or sends any reply, it must cross-reference the sender's email address against the member database. If the sender is flagged as a sleeper member, skip all further processing and escalate directly to the human agent via WhatsApp. Log the row in Google Sheets with Status set to <em>Escalated &mdash; Sleeper Member.</em></p>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <div class="section-label">Automation Flow</div>
+    <h2>How It Works</h2>
+    <p class="section-desc">The automation runs on a schedule every hour and processes all unread emails in the support inbox since the last run.</p>
+
+    <div class="flow">
+      <div class="flow-node primary">Every Hour</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Fetch Unread Emails</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Sleeper Check</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Knowledge Base Search</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Answer Found?</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Reply or Escalate</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Log + Mark Read</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>If an Answer Is Found</h3>
+        <p>Claude drafts a reply using only the content found in the Knowledge Base. The reply is sent from the support inbox. The email is logged as <span class="pill pill-green">Resolved Automatically</span> and marked as read.</p>
+      </div>
+      <div class="card">
+        <h3>If No Answer Is Found</h3>
+        <p>The automation sends a WhatsApp message to the designated human agent with the sender name, email, subject, and body. The email is logged as <span class="pill pill-amber">Escalated to Human</span> and marked as read.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- REPLY RULES -->
+  <div class="section">
+    <div class="section-label">Content Rules</div>
+    <h2>Email Reply Rules</h2>
+    <p class="section-desc">These rules apply to every auto-reply sent by the automation without exception.</p>
+
+    <ul class="rules-list">
+      <li class="rule-row"><span class="dash">&mdash;</span>Replies must use Knowledge Base content only. Do not add any information not explicitly found in the Knowledge Base.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not include internal staff names, team names, or department names of any kind.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not mention AI, automation, bots, Zapier, Claude, or any internal system by name.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not include pricing, promotions, offers, or membership details unless explicitly stated in the Knowledge Base answer.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not reference other members, member data, or any information about how the gym operates internally.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Keep replies concise. Answer the question directly. Do not pad with unnecessary filler.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Always sign off as <em>The Support Team</em> &mdash; never with an individual name or job title.</li>
+      <li class="rule-row danger"><span class="dash">&mdash;</span><strong>Sleeper members must never receive an automated reply under any circumstances. If the sender is a sleeper member, escalate to human immediately without sending anything.</strong></li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <!-- WHATSAPP ESCALATION -->
+  <div class="section">
+    <div class="section-label">Human Escalation</div>
+    <h2>WhatsApp Alert Format</h2>
+    <p class="section-desc">When an email is escalated, the human agent receives a WhatsApp message with the following details.</p>
+
+    <div class="card" style="margin-bottom:16px;">
+      <h3>Message Content</h3>
+      <p>
+        NEW EMAIL &mdash; NEEDS HUMAN RESPONSE<br /><br />
+        From: [Sender Name] &lt;[Sender Email]&gt;<br />
+        Subject: [Subject Line]<br />
+        Received: [Date &amp; Time]<br /><br />
+        Message: [Email Body &mdash; truncated to 500 characters if long]<br /><br />
+        Please reply directly to the customer&rsquo;s email.
+      </p>
+    </div>
+
+    <div class="callout callout-info">
+      <strong>Note:</strong> The WhatsApp message includes only what the human agent needs to respond. It does not include any internal reference numbers, automation logs, or system details.
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- LOG -->
+  <div class="section">
+    <div class="section-label">Logging</div>
+    <h2>What Gets Logged</h2>
+    <p class="section-desc">Every email processed is recorded in the Inbound Triage sheet of the shared Google Sheets log.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Column</th><th>Value</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Date &amp; Time</td><td>Auto-timestamp</td><td>Set when the row is created</td></tr>
+          <tr><td>Sender Name</td><td>From email header</td><td>&nbsp;</td></tr>
+          <tr><td>Sender Email</td><td>From email header</td><td>&nbsp;</td></tr>
+          <tr><td>Subject</td><td>Email subject line</td><td>&nbsp;</td></tr>
+          <tr><td>Email Body</td><td>Full plain text body</td><td>&nbsp;</td></tr>
+          <tr><td>Response Sent</td><td>First 300 characters of the reply</td><td>N/A if escalated</td></tr>
+          <tr><td>Status</td><td>See values below</td><td>&nbsp;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-3" style="margin-top:16px;">
+      <div class="card">
+        <h3>Resolved Automatically</h3>
+        <p>Knowledge Base answer found. Reply sent. No human action needed.</p>
+      </div>
+      <div class="card">
+        <h3>Escalated to Human</h3>
+        <p>No KB answer found. WhatsApp sent to human agent.</p>
+      </div>
+      <div class="card">
+        <h3>Escalated &mdash; Sleeper Member</h3>
+        <p>Sender identified as a sleeper member. Routed to human with no reply sent.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-nav">
+    <a href="gmail.html">
+      <div class="pn-label">&larr; Previous</div>
+      <div class="pn-title">Moving to Gmail</div>
+    </a>
+    <a href="outbound.html" class="next">
+      <div class="pn-label">Next &rarr;</div>
+      <div class="pn-title">Outbound B2B Campaign</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outbound B2B Campaign — JustGym Plan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">JustGym</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="gmail.html">Gmail</a>
+    <a href="inbound.html">Inbound</a>
+    <a href="outbound.html" class="active">Outbound</a>
+    <a href="stack.html">Tech Stack</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Overview</a><span>&rsaquo;</span> Outbound B2B Campaign
+</div>
+
+<div class="page-header">
+  <div class="label">Section 03</div>
+  <h1>Outbound B2B Campaign</h1>
+  <p>Every day at 9 AM, the automation finds local businesses, locates a contact email, has Claude write a personalised pitch, and sends it from the outreach inbox. All activity is logged.</p>
+</div>
+
+<div class="main">
+
+  <div class="section">
+    <div class="section-label">Tool Choice</div>
+    <h2>Why Not Apollo</h2>
+    <p class="section-desc">Apollo is a large-scale global B2B database. For this campaign it is unnecessary.</p>
+
+    <div class="callout callout-info">
+      <strong>SerpAPI is the better fit.</strong> Apollo is designed for prospecting across millions of global companies by industry, job title, and company size. For finding businesses within a few miles of a gym, SerpAPI (Google Maps) is more accurate, faster to configure, and significantly cheaper. It searches by physical proximity and returns live, local results &mdash; exactly what this campaign needs.
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>SerpAPI (Google Maps)</h3>
+        <p>Searches Google Maps by location and business type. Returns real businesses within your target radius with name, address, website, phone, and category. Free tier: 100 searches per month.</p>
+      </div>
+      <div class="card">
+        <h3>Hunter.io</h3>
+        <p>Takes a business website and finds verified email addresses for decision makers. Targets HR Managers, Office Managers, Directors, and MDs. Free tier: 25 searches per month.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Automation Flow</div>
+    <h2>How It Works</h2>
+    <p class="section-desc">Runs once a day at 9:00 AM. Processes up to 20 businesses per run.</p>
+
+    <div class="flow">
+      <div class="flow-node primary">9:00 AM Daily</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">SerpAPI &mdash; Find Businesses</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Hunter &mdash; Find Email</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Check Log &mdash; 90 Days</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Claude Drafts Email</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Gmail Sends</div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">Log Row</div>
+    </div>
+
+    <ul class="steps">
+      <li class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h4>Find local businesses via SerpAPI</h4>
+          <p>SerpAPI runs a Google Maps search for businesses within the configured radius of the gym. Filter by business type: offices, retail, hospitality, healthcare, tech. Each result returns the business name, address, website, phone number, and category.</p>
+          <div class="tags"><span class="tag">SerpAPI</span><span class="tag">Google Maps</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h4>Find a verified contact email via Hunter.io</h4>
+          <p>The business website is passed to Hunter.io to find a verified email for a decision maker. Target titles in priority order: HR Manager, Office Manager, Managing Director, Director, Owner. If Hunter finds no verified email, the business is skipped and logged as <em>No Email Found.</em></p>
+          <div class="tags"><span class="tag">Hunter.io</span><span class="tag">EmailHunterCLIAPI</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h4>Check the outreach log for recent contact</h4>
+          <p>Before sending, the automation searches the Outbound Outreach sheet for the business name and email address. If the business was contacted within the last 90 days, it is skipped and logged as <em>Already Contacted.</em> This protects sender reputation and avoids irritating potential leads.</p>
+          <div class="tags"><span class="tag">Google Sheets</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h4>Claude writes a personalised email</h4>
+          <p>Claude receives the business name, contact name (if known), industry, and approximate employee count. It writes a short pitch &mdash; under 150 words &mdash; that references the specific industry or team size. The tone is warm and direct. No pricing, no guarantees, no template feel. Signs off as <em>JustGym Team.</em></p>
+          <div class="tags"><span class="tag">Claude (Anthropic)</span><span class="tag">AnthropicCLIAPI</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h4>Send from the outreach inbox</h4>
+          <p>The email is sent from <strong>outreach@justgym.co.uk</strong> &mdash; completely separate from the support inbox. The subject line is fixed for all emails: <em>A staff perk your team will actually use &mdash; JustGym.</em> The daily cap is 20 sent emails, hard limit, to stay within Gmail sending thresholds.</p>
+          <div class="tags"><span class="tag">Gmail</span><span class="tag">GoogleMailV2CLIAPI</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">06</div>
+        <div class="step-body">
+          <h4>Log every attempt to Google Sheets</h4>
+          <p>Every business processed gets a row in the Outbound Outreach sheet &mdash; regardless of outcome. Sent, skipped, or no email found are all recorded. This builds a full contact history and prevents any business being emailed twice within the 90 day window.</p>
+          <div class="tags"><span class="tag">Google Sheets</span></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Campaign Rules</div>
+    <h2>Target Profile &amp; Safeguards</h2>
+    <p class="section-desc">Who we target and the limits that protect sender reputation.</p>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="card">
+        <h3>Target Profile</h3>
+        <p>
+          Location: within target radius of the gym<br />
+          Employees: 5 to 200<br />
+          Industries: offices, retail, hospitality, healthcare, tech<br />
+          Contact title: HR Manager, Office Manager, MD, Director, Owner
+        </p>
+      </div>
+      <div class="card">
+        <h3>Hard Limits</h3>
+        <p>
+          Maximum 20 emails sent per day<br />
+          No business contacted more than once per 90 days<br />
+          Skip any business with fewer than 5 employees<br />
+          No pricing or guarantees in any email copy
+        </p>
+      </div>
+    </div>
+
+    <ul class="rules-list">
+      <li class="rule-row"><span class="dash">&mdash;</span>Emails must not include specific pricing, package details, or promotional offers. Mention only that packages are available and offer to share them on request.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Emails must not sound templated. Claude should reference something specific to the business &mdash; their industry, their team size, or a relevant angle.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Do not contact businesses that are existing JustGym corporate clients. Cross-reference against the existing client list before sending.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>All emails are sent from outreach@justgym.co.uk only. Never from the support inbox.</li>
+      <li class="rule-row"><span class="dash">&mdash;</span>Sign off as <em>JustGym Team</em> &mdash; never with an individual name.</li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Email Template</div>
+    <h2>What Claude Produces</h2>
+    <p class="section-desc">Claude is given this brief for every email. The output varies per business but stays within these parameters.</p>
+
+    <div class="card" style="margin-bottom:16px;">
+      <h3>Prompt Brief Given to Claude</h3>
+      <p>
+        Business: [name from SerpAPI]<br />
+        Contact: [name from Hunter, or &ldquo;there&rdquo; if unknown]<br />
+        Industry: [category from SerpAPI]<br />
+        Employees: [approximate count]<br /><br />
+        Write a short, warm outreach email for JustGym offering a corporate staff membership package as an employee benefit. Under 150 words. Open with a line specific to their industry or team size. Include a soft CTA &mdash; offer to send packages over, no obligation. No pricing. No guarantees. No emojis. Sign off as JustGym Team.
+      </p>
+    </div>
+
+    <div class="callout callout-info">
+      <strong>Subject line is fixed for all outreach emails:</strong> &ldquo;A staff perk your team will actually use &mdash; JustGym&rdquo;
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Logging</div>
+    <h2>What Gets Logged</h2>
+    <p class="section-desc">Every processed business &mdash; sent, skipped, or no email found &mdash; is recorded in the Outbound Outreach sheet.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Column</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Date &amp; Time</td><td>Auto-timestamp</td></tr>
+          <tr><td>Business Name</td><td>From SerpAPI</td></tr>
+          <tr><td>Industry</td><td>From SerpAPI</td></tr>
+          <tr><td>Employee Count</td><td>From SerpAPI / Hunter enrichment</td></tr>
+          <tr><td>Contact Name</td><td>From Hunter</td></tr>
+          <tr><td>Contact Email</td><td>From Hunter</td></tr>
+          <tr><td>Email Sent</td><td>Yes / No</td></tr>
+          <tr><td>Status</td><td>Contacted / No Email Found / Already Contacted / Skipped</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="page-nav">
+    <a href="inbound.html">
+      <div class="pn-label">&larr; Previous</div>
+      <div class="pn-title">Inbound Email Strategy</div>
+    </a>
+    <a href="stack.html" class="next">
+      <div class="pn-label">Next &rarr;</div>
+      <div class="pn-title">Tech Stack</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

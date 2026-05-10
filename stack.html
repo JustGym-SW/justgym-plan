@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Stack — JustGym Plan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">JustGym</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="gmail.html">Gmail</a>
+    <a href="inbound.html">Inbound</a>
+    <a href="outbound.html">Outbound</a>
+    <a href="stack.html" class="active">Tech Stack</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Overview</a><span>&rsaquo;</span> Tech Stack
+</div>
+
+<div class="page-header">
+  <div class="label">Section 04</div>
+  <h1>Tech Stack</h1>
+  <p>Every tool used across both automations &mdash; what it does, its Zapier App ID, cost, and how it connects. All tools are connected through Zapier except SerpAPI, which is called directly.</p>
+</div>
+
+<div class="main">
+
+  <div class="section">
+    <div class="section-label">Tools</div>
+    <h2>All Tools at a Glance</h2>
+    <p class="section-desc">Six tools across both automations. Three are included in Google Workspace at no extra cost.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Zapier App ID</th>
+            <th>Used For</th>
+            <th>Cost</th>
+            <th>Auth Method</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Gmail</strong></td>
+            <td><code>GoogleMailV2CLIAPI</code></td>
+            <td>Inbound triage inbox, outbound sending, marking emails as read</td>
+            <td>Included in Google Workspace</td>
+            <td>Google OAuth</td>
+          </tr>
+          <tr>
+            <td><strong>Google Sheets</strong></td>
+            <td><code>GoogleSheetsV2CLIAPI</code></td>
+            <td>Shared automation log for both inbound and outbound</td>
+            <td>Included in Google Workspace</td>
+            <td>Google OAuth</td>
+          </tr>
+          <tr>
+            <td><strong>WhatsApp Business</strong></td>
+            <td><code>App228834CLIAPI</code></td>
+            <td>Sending human escalation alerts for inbound emails</td>
+            <td>WhatsApp Business plan</td>
+            <td>WhatsApp login</td>
+          </tr>
+          <tr>
+            <td><strong>Claude (Anthropic)</strong></td>
+            <td><code>AnthropicCLIAPI</code></td>
+            <td>Drafting all outbound campaign emails</td>
+            <td>Pay per use. API key from console.anthropic.com</td>
+            <td>API key</td>
+          </tr>
+          <tr>
+            <td><strong>SerpAPI</strong></td>
+            <td>Direct API (no Zapier)</td>
+            <td>Finding local businesses via Google Maps by radius</td>
+            <td>Free: 100 searches/month. Paid from $50/month</td>
+            <td>API key</td>
+          </tr>
+          <tr>
+            <td><strong>Hunter.io</strong></td>
+            <td><code>EmailHunterCLIAPI</code></td>
+            <td>Finding verified contact emails from business websites</td>
+            <td>Free: 25/month. Starter $34/month</td>
+            <td>API key or OAuth</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Zapier</div>
+    <h2>Zapier Skills</h2>
+    <p class="section-desc">Two Zapier skills are configured &mdash; one per automation. These are saved in Zapier and can be triggered from the Copilot interface.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Hourly Email Triage &amp; Auto-Reply</h3>
+        <p>
+          Trigger: every hour<br />
+          Fetches unread emails, checks for sleeper members, searches the Knowledge Base, and sends an auto-reply or WhatsApp escalation. Logs every email. Marks all processed emails as read.<br /><br />
+          Apps: Gmail &bull; Google Sheets &bull; WhatsApp Business
+        </p>
+      </div>
+      <div class="card">
+        <h3>B2B Staff Benefits Outreach</h3>
+        <p>
+          Trigger: daily at 9:00 AM<br />
+          Finds local businesses via SerpAPI, looks up emails via Hunter, checks the log for recent contact, has Claude draft a pitch, sends from the outreach inbox, and logs every attempt.<br /><br />
+          Apps: SerpAPI &bull; Hunter &bull; Claude &bull; Gmail &bull; Google Sheets
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Authentication</div>
+    <h2>How Each Tool Connects</h2>
+    <p class="section-desc">Most tools connect via Zapier's Connected Accounts. API keys are entered once and stored securely in Zapier.</p>
+
+    <ul class="steps">
+      <li class="step">
+        <div class="step-num">Gmail</div>
+        <div class="step-body">
+          <h4>Google OAuth via Zapier</h4>
+          <p>In Zapier, go to Connected Accounts and add each Gmail address separately. Zapier uses Google's OAuth flow &mdash; you log in with Google and grant Zapier access. No password is stored. Repeat for both the support and outreach inboxes.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">Sheets</div>
+        <div class="step-body">
+          <h4>Google OAuth via Zapier (same account)</h4>
+          <p>If you have already connected a Gmail account to Zapier, Google Sheets uses the same connection automatically. No separate login required.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">WhatsApp</div>
+        <div class="step-body">
+          <h4>WhatsApp Business login</h4>
+          <p>Connect WhatsApp Business via the WhatsApp Business app or API. In Zapier, add the WhatsApp Business connection and follow the authentication flow. Requires a WhatsApp Business account with an active phone number.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">Claude</div>
+        <div class="step-body">
+          <h4>Anthropic API key</h4>
+          <p>Go to console.anthropic.com and create an API key under your Anthropic account. In Zapier, add the Anthropic (Claude) connection and paste the key. This ties to your Anthropic account &mdash; it is not a separate login, just the key from your existing account.</p>
+          <div class="tags"><span class="tag">console.anthropic.com</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">SerpAPI</div>
+        <div class="step-body">
+          <h4>Direct API key (called from Zapier webhook step)</h4>
+          <p>Sign up at serpapi.com and copy your API key from the dashboard. SerpAPI is not available as a native Zapier app, so it is called via a Zapier Webhooks step with the key passed as a query parameter. The free tier gives 100 searches per month.</p>
+          <div class="tags"><span class="tag">serpapi.com</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">Hunter</div>
+        <div class="step-body">
+          <h4>Hunter.io API key or OAuth</h4>
+          <p>Sign up at hunter.io and connect via Zapier's Hunter integration. You can use OAuth or paste an API key from your Hunter dashboard. The free tier provides 25 searches per month, which covers small daily volumes.</p>
+          <div class="tags"><span class="tag">hunter.io</span></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Documents</div>
+    <h2>Supporting Files</h2>
+    <p class="section-desc">Local documents saved alongside this plan.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>JustGym-Automations.md</h3>
+        <p>Location: <code>Documents/JustGym-Automations.md</code><br /><br />Master overview of both automations with all Zapier App IDs, notes on Claude authentication, and links to supporting documents.</p>
+      </div>
+      <div class="card">
+        <h3>outbound-b2b-outreach.md</h3>
+        <p>Location: <code>Documents/JUSTGYM/Marketing/<br />outbound-b2b-outreach.md</code><br /><br />Full outbound campaign brief including target profile, daily limits, the Claude prompt template, and the Google Sheets column structure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-nav">
+    <a href="outbound.html">
+      <div class="pn-label">&larr; Previous</div>
+      <div class="pn-title">Outbound B2B Campaign</div>
+    </a>
+    <a href="index.html" class="next">
+      <div class="pn-label">Back to start</div>
+      <div class="pn-title">Overview</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

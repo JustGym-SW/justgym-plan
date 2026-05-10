@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gmail Migration — JustGym Plan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">JustGym</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="gmail.html" class="active">Gmail</a>
+    <a href="inbound.html">Inbound</a>
+    <a href="outbound.html">Outbound</a>
+    <a href="stack.html">Tech Stack</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Overview</a><span>&rsaquo;</span> Moving to Gmail
+</div>
+
+<div class="page-header">
+  <div class="label">Section 01</div>
+  <h1>Moving to Gmail</h1>
+  <p>Set up Google Workspace, create two separate inboxes, migrate existing emails, and connect everything to Zapier. This is the foundation everything else depends on.</p>
+</div>
+
+<div class="main">
+
+  <div class="section">
+    <div class="section-label">Why Gmail</div>
+    <h2>Why We Are Moving</h2>
+    <p class="section-desc">The automation tools connect directly to Gmail. Everything &mdash; inbound triage, outbound outreach, and the shared log &mdash; runs through Google.</p>
+
+    <div class="callout callout-info">
+      <strong>One account, full automation.</strong> Gmail via Google Workspace connects to Zapier via OAuth with no extra configuration. Google Sheets and Google Drive are included in the same account, so the log spreadsheet is always accessible in the same place.
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Gmail</h3>
+        <p>Two inboxes &mdash; support and outreach &mdash; both connected to Zapier. All automated sending and receiving runs through here.</p>
+      </div>
+      <div class="card">
+        <h3>Google Sheets</h3>
+        <p>The shared automation log. Every email processed &mdash; inbound or outbound &mdash; gets a row added automatically.</p>
+      </div>
+      <div class="card">
+        <h3>Google Drive</h3>
+        <p>Stores the log spreadsheet and any supporting documents. Accessible by the whole team from any device.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Setup Steps</div>
+    <h2>How to Set It Up</h2>
+    <p class="section-desc">Follow these steps in order. Steps 1 to 4 are one-time setup. Steps 5 and 6 take a few minutes each.</p>
+
+    <ul class="steps">
+      <li class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h4>Sign up for Google Workspace</h4>
+          <p>Go to workspace.google.com and sign up for Business Starter at &pound;5.20 per user per month. Use your existing domain such as justgym.co.uk. You will need to verify domain ownership &mdash; Google walks you through this during setup.</p>
+          <div class="tags"><span class="tag">workspace.google.com</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h4>Create two Gmail addresses</h4>
+          <p>In the Google Admin console, create <strong>support@justgym.co.uk</strong> for all member and public enquiries, and <strong>outreach@justgym.co.uk</strong> exclusively for the B2B campaign. Keeping them separate means the automations never interfere with each other and the inboxes stay clean.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h4>Migrate existing emails</h4>
+          <p>Export your current emails from your existing provider as MBOX files, then import using the Google Workspace Migration Tool. Historical emails stay searchable and accessible. Google provides guides for every major provider including Outlook, Yahoo, and most hosted services.</p>
+          <div class="tags"><span class="tag">Google Migration Tool</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h4>Update DNS records at your domain registrar</h4>
+          <p>Add Google's MX records so email routes to Gmail. Also add SPF, DKIM, and DMARC records at the same time &mdash; these protect your domain from being spoofed and help emails land in inboxes rather than spam. Propagation takes 24 to 48 hours. Google Workspace provides exact values and per-registrar instructions.</p>
+          <div class="tags"><span class="tag">MX Records</span><span class="tag">SPF</span><span class="tag">DKIM</span><span class="tag">DMARC</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h4>Connect both Gmail accounts to Zapier</h4>
+          <p>In Zapier, go to Connected Accounts and add both the support and outreach Gmail addresses. Zapier uses Google OAuth &mdash; no passwords are stored. Once connected, both automations will be ready to activate. If you have already connected a Google account to Zapier, you can add additional accounts from the same screen.</p>
+          <div class="tags"><span class="tag">GoogleMailV2CLIAPI</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">06</div>
+        <div class="step-body">
+          <h4>Create the shared Google Sheets log</h4>
+          <p>In Google Drive, create a new spreadsheet called <strong>JustGym &mdash; Automation Log</strong>. Add two sheets inside it: one named <em>Inbound Triage</em> and one named <em>Outbound Outreach</em>. Connect this spreadsheet to Zapier via Connected Accounts. Both automations will write rows to their respective sheets automatically.</p>
+          <div class="tags"><span class="tag">GoogleSheetsV2CLIAPI</span></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <div class="section-label">Log Structure</div>
+    <h2>The Shared Spreadsheet</h2>
+    <p class="section-desc">One spreadsheet with two sheets &mdash; each automation writes to its own sheet.</p>
+
+    <div class="grid-2">
+      <div>
+        <div class="card" style="margin-bottom:16px;">
+          <h3>Sheet 1 &mdash; Inbound Triage</h3>
+          <p>Every support email processed by the inbound automation gets a row here, regardless of whether it was auto-replied or escalated.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Column</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Date &amp; Time</td><td>Auto-timestamp</td></tr>
+              <tr><td>Sender Name</td><td>From email header</td></tr>
+              <tr><td>Sender Email</td><td>From email header</td></tr>
+              <tr><td>Subject</td><td>Email subject line</td></tr>
+              <tr><td>Email Body</td><td>Full plain text body</td></tr>
+              <tr><td>Response Sent</td><td>First 300 chars of reply, or N/A</td></tr>
+              <tr><td>Status</td><td>Resolved Automatically / Escalated to Human</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:16px;">
+          <h3>Sheet 2 &mdash; Outbound Outreach</h3>
+          <p>Every business the outbound automation processes is logged here &mdash; sent, skipped, or no email found.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Column</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Date &amp; Time</td><td>Auto-timestamp</td></tr>
+              <tr><td>Business Name</td><td>From SerpAPI</td></tr>
+              <tr><td>Industry</td><td>From SerpAPI</td></tr>
+              <tr><td>Contact Name</td><td>From Hunter</td></tr>
+              <tr><td>Contact Email</td><td>From Hunter</td></tr>
+              <tr><td>Email Sent</td><td>Yes / No</td></tr>
+              <tr><td>Status</td><td>Contacted / No Email Found / Skipped</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-nav">
+    <a href="index.html">
+      <div class="pn-label">&larr; Previous</div>
+      <div class="pn-title">Overview</div>
+    </a>
+    <a href="inbound.html" class="next">
+      <div class="pn-label">Next &rarr;</div>
+      <div class="pn-title">Inbound Email Strategy</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
